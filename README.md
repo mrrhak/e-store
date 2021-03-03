@@ -60,7 +60,7 @@ public/index.php
 ## Contributor
 1. [Long Kimhak](http://www.mrrhak.com)
 2. [Tep Chiva](#)
-3. [May Veasna](#)
+3. [Mai Veasna](#)
 4. [Ny Soknet](#)
 5. [Hoh Leakhena](#)
 6. [Sreng Sokkea](#)
