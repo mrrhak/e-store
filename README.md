@@ -59,11 +59,11 @@ public/index.php
 
 ## Contributor
 1. [Long Kimhak](http://www.mrrhak.com)
-2. [Tep Chiva](#)
-3. [Mai Veasna](#)
-4. [Ny Soknet](#)
-5. [Hoh Leakhena](#)
-6. [Sreng Sokkea](#)
+2. [Tep Chiva](/#)
+3. [Mai Veasna](/#)
+4. [Ny Soknet](/#)
+5. [Hoh Leakhena](/#)
+6. [Sreng Sokkea](/#)
 
 ## Created At
 03-03-2021
