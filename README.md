@@ -36,25 +36,34 @@ git clone https://github.com/MrrHak/e-store.git
 ## Starting Point
 
 To get start
-- configure MySQL connection in config/application.config.php
+- configure MySQL connection in **app/configs/config.php**
 
 ```php
-index.php
+public/index.php
 ```
 
 ## Scope of projects
-- **[Home Page](#home-page)**
 
-## Home Page
+### Frontend Feature
+- **[Home](#home)**
+### Backend Feature
+- **[Dashboard](#dashboard)**
+
+## Frontend UI
+### Home
+- Not yet available
+
+## Backend UI
+### Dashboard
 - Not yet available
 
 ## Contributor
 1. [Long Kimhak](http://www.mrrhak.com)
-2. [Tep Chiva]
-3. [May Veasna]
-4. [Ny Soknet]
-5. [Hoh Leakhena]
-6. [Sreng Sokkea]
+2. [Tep Chiva]()
+3. [May Veasna]()
+4. [Ny Soknet]()
+5. [Hoh Leakhena]()
+6. [Sreng Sokkea]()
 
 ## Created At
 03-03-2021
