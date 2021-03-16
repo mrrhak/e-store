@@ -27,6 +27,14 @@
           <li class="nav-item">
             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
           </li>
+
+          <li class="nav-item">
+            <?php if(isset($_SESSION['user_id'])) : ?>
+            <a class="nav-link" href="<?= URLROOT ?>/users/logout" tabindex="-1" aria-disabled="true">Log out</a>
+            <?php  else : ?>
+            <a class="nav-link" href="<?= URLROOT ?>/users/login" tabindex="-1" aria-disabled="true">Log in</a>
+               <?php  endif; ?>
+          </li>
         </ul>
         <form class="d-flex">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
