@@ -33,6 +33,27 @@ This project is for response to subject WAD's assignment under topic "E-Commerce
 git clone https://github.com/MrrHak/e-store.git
 ```
 
+## Add config file to app/config/config.php:
+```php
+<?php
+  //TODO:Connect your own local database
+  // Database
+  define('DB_HOST', 'localhost');
+  define('DB_PORT', '3306');
+  define('DB_NAME', 'estore_db');
+  define('DB_USER', 'root');
+  define('DB_PASS', '');
+
+  // APP ROOT
+  define('APPROOT', dirname(dirname(__FILE__)));
+  // URL ROOT
+  //TODO:Your own local project root
+  define('URLROOT', 'http://localhost/web/PHP_MVC/e-store');
+  // SITE NAME
+  define('SITENAME', 'E-Store');
+?>
+```
+
 ## Starting Point
 
 To get start
