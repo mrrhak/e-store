@@ -10,7 +10,7 @@
   // APP ROOT
   define('APPROOT', dirname(dirname(__FILE__)));
   // URL ROOT
-  define('URLROOT', 'localhost/web/PHP_MVC/mvc');
+  define('URLROOT', 'http://localhost/web/PHP_MVC/e-store');
   // SITE NAME
   define('SITENAME', 'E-Store');
 ?>

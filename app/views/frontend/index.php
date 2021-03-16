@@ -7,7 +7,7 @@
   //echo $data['title'];
 
   // Start Header
-  require_once '../app/views/layouts/header.php';
+  require_once APPROOT.'/views/layouts/header.php';
   // End Header
 ?>
 
@@ -20,5 +20,5 @@
  
 
 <!-- Start Footer -->
-<?php require_once '../app/views/layouts/footer.php'; ?>
+<?php require_once APPROOT.'/views/layouts/footer.php'; ?>
 <!-- End Footer -->
