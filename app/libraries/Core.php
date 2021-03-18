@@ -7,7 +7,6 @@
 
     public function __construct(){
       $url = $this->getUrl();
-
       // Look in controllers at first array
       if(isset($url[0])){
         if(file_exists('../app/controllers/'.ucwords($url[0]).'.php')){
@@ -36,7 +35,7 @@
       call_user_func_array([$this->currentController, $this->currentMethod], $this->params);
     }
 
-    public function getUrl(){
+    public function getUrl(){      
       if(isset($_GET['url'])){
         $url = rtrim($_GET['url'], '/');
         // Allow to filtter variable as string/number
