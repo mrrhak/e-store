@@ -16,7 +16,12 @@ class Controller{
       require_once '../app/views/'.$view.'.php';
     }
     else{
-      die('View does not exists.');
+      if(file_exists('../app/views/'.$view.'/index.php')){
+        require_once '../app/views/'.$view.'/index.php';
+      }
+      else{
+        die('View does not exists.');
+      }
     }
   }
 }

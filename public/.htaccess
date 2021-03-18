@@ -5,7 +5,8 @@
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteCond %{REQUEST_FILENAME} !-f
 
-  # For redirect to index page if file not exists 
+  # For redirect to index page if file not exists
+  # TODO put your own path below
   RewriteBase /web/PHP_MVC/e-store/public
   RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
 </IfModule>
