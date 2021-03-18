@@ -57,7 +57,6 @@ git clone https://github.com/MrrHak/e-store.git
 ## Starting Point
 
 To get start
-- configure MySQL connection in **app/configs/config.php**
 
 ```php
 public/index.php
