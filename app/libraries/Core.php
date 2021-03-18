@@ -47,3 +47,13 @@
       }
     }
   }
+  
+ 
+  /*
+   * App Core Class
+   * Creates URL & loads core controller
+   * URL FORMAT - /controller/method/params
+   */
+  
+
+
