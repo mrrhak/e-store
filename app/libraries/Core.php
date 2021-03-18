@@ -14,11 +14,18 @@
           $this->currentController = ucwords($url[0]);
           unset($url[0]);
         }
+        else{
+          $this->currentController = 'AppError';
+        }
       }
 
+      
       // Require controller
       require_once '../app/controllers/'.$this->currentController.'.php';
       $this->currentController = new $this->currentController;
+      
+      
+      
 
       // Look in method at second array
       if(isset($url[1])){

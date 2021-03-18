@@ -1,3 +1,4 @@
+
 <header>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
@@ -29,7 +30,7 @@
           </li>
 
           <li class="nav-item">
-            <?php if(isset($_SESSION['user_id'])) : ?>
+            <?php if(isLoggedIn()) : ?>
             <a class="nav-link" href="<?= URLROOT ?>/users/logout" tabindex="-1" aria-disabled="true">Log out</a>
             <?php  else : ?>
             <a class="nav-link" href="<?= URLROOT ?>/users/login" tabindex="-1" aria-disabled="true">Log in</a>
@@ -38,7 +39,7 @@
           </li>
           <li class="nav-item">
            
-            <a class="nav-link" href="<?= URLROOT ?>/backend/products/index" tabindex="-1" aria-disabled="true">Products</a>
+            <a class="nav-link" href="<?= URLROOT ?>/backend/products" tabindex="-1" aria-disabled="true">Products</a>
             
             
           </li>
