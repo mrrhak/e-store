@@ -35,7 +35,15 @@
             <?php  else : ?>
             <a class="nav-link" href="<?= URLROOT ?>/users/login" tabindex="-1" aria-disabled="true">Log in</a>
                <?php  endif; ?>
+            
           </li>
+          <li class="nav-item">
+           
+            <a class="nav-link" href="<?= URLROOT ?>/backend/products" tabindex="-1" aria-disabled="true">Products</a>
+            
+            
+          </li>
+          
         </ul>
         <form class="d-flex">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

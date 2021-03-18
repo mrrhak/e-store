@@ -7,7 +7,6 @@
 
     public function __construct(){
       $url = $this->getUrl();
-
       // Look in controllers at first array
       if(isset($url[0])){
         if(file_exists('../app/controllers/'.ucwords($url[0]).'.php')){
@@ -15,11 +14,18 @@
           $this->currentController = ucwords($url[0]);
           unset($url[0]);
         }
+        else{
+          $this->currentController = 'AppError';
+        }
       }
 
+      
       // Require controller
       require_once '../app/controllers/'.$this->currentController.'.php';
       $this->currentController = new $this->currentController;
+      
+      
+      
 
       // Look in method at second array
       if(isset($url[1])){
@@ -36,7 +42,7 @@
       call_user_func_array([$this->currentController, $this->currentMethod], $this->params);
     }
 
-    public function getUrl(){
+    public function getUrl(){      
       if(isset($_GET['url'])){
         $url = rtrim($_GET['url'], '/');
         // Allow to filtter variable as string/number
@@ -47,3 +53,13 @@
       }
     }
   }
+  
+ 
+  /*
+   * App Core Class
+   * Creates URL & loads core controller
+   * URL FORMAT - /controller/method/params
+   */
+  
+
+
