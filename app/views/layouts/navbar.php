@@ -39,7 +39,7 @@
           </li>
           <li class="nav-item">
            
-            <a class="nav-link" href="<?= URLROOT ?>/backend/products" tabindex="-1" aria-disabled="true">Products</a>
+            <a class="nav-link" href="<?= URLROOT ?>/products" tabindex="-1" aria-disabled="true">Products</a>
             
             
           </li>
