@@ -33,7 +33,7 @@ This project is for response to subject WAD's assignment under topic "E-Commerce
 git clone https://github.com/MrrHak/e-store.git
 ```
 
-## You must Add config file to app/config/config.php:
+## You must Add config file to app/configs/config.php:
 ```php
 <?php
   //TODO:Connect your own local database
