@@ -1,3 +1,17 @@
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+      <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+
+    <!-- Main Footer -->
+    <footer class="main-footer">
+      <strong>Copyright &copy; 2021 <a href="#">E-STORE</a>. </strong>
+      All rights reserved.
+      <div class="float-right d-none d-sm-inline-block">
+        <b>WAD</b> Assignment Team
+      </div>
+    </footer>
   </div>
   <!-- ./wrapper -->
   <!-- jQuery -->
@@ -8,6 +22,10 @@
   <script src="<?= URLROOT ?>/backend/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
   <!-- AdminLTE App -->
   <script src="<?= URLROOT ?>/backend/js/adminlte.min.js"></script>
+
+
+  <!-- AdminLTE for demo purposes -->
+  <script src="<?= URLROOT ?>\backend\js\demo.js"></script>
   
   </body>
 </html>
