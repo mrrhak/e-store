@@ -90,7 +90,13 @@ public/index.php
 
 ## Backend UI
 ### Dashboard
-- Not yet available
+- Use AdminLte 3.1 rc Template for backend dashboard, link download template 
+  ```
+  https://github.com/ColorlibHQ/AdminLTE
+  ```
+- 
+ 
+
 
 ## Contributor
 1. [Long Kimhak](http://www.mrrhak.com)
