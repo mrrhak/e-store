@@ -6,6 +6,6 @@
 
   # For redirect to index page if file not exists
   # TODO put your own path below
-  RewriteBase /web/e-store/public
+  RewriteBase /web/PHP_MVC/e-store/public
   RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
 </IfModule>
