@@ -47,11 +47,26 @@ git clone https://github.com/MrrHak/e-store.git
   // APP ROOT
   define('APPROOT', dirname(dirname(__FILE__)));
   // URL ROOT
-  //TODO:Your own local project root
-  define('URLROOT', 'http://localhost/web/PHP_MVC/e-store');
+  //TODO:Your own local project root (e.g: http://localhost/web/e-store)
+  define('URLROOT', 'http://localhost/web/e-store');
   // SITE NAME
   define('SITENAME', 'E-Store');
 ?>
+```
+
+## You must add file .htaccess at public/.htaccess with code below:
+```php
+<IfModule mod_rewrite.c>
+  Options -Multiviews
+  RewriteEngine On
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !-f
+
+  # For redirect to index page if file not exists
+  # TODO put your own path below (e.g: http://localhost/web/e-store)
+  RewriteBase /web/e-store/public
+  RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
+</IfModule>
 ```
 
 ## Starting Point
