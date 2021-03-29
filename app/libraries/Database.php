@@ -56,7 +56,7 @@
     }
 
     // Return an array
-    public function resultSet(){
+    public function resultSet():array{
       $this->execute();
       return $this->statement->fetchAll(PDO::FETCH_OBJ);
     }
@@ -72,4 +72,3 @@
       return $this->statement->rowCount();
     }
   }
-?>
