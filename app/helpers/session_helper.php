@@ -9,3 +9,7 @@
       return false;
     }
   }
+  
+function layout ($views){
+  return APPROOT."/views/layouts/$views.php";
+}

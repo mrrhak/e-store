@@ -1,4 +1,3 @@
-
 <?php
    class Product {
        
@@ -9,8 +8,8 @@
     
     //   this function return all product list
     public function getAllProduct(){
-         $this->db->query('SELECT * FROM products ORDER BY create_at ASC');
-         $results = $this->db->resaultSet() ;
+         $this->db->query('SELECT * FROM products ORDER BY created_at ASC');
+         $results = $this->db->resultSet() ;
          return $results ;
     }
     
