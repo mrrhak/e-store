@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 18, 2021 at 03:24 PM
+-- Generation Time: Mar 30, 2021 at 03:35 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.8
 
@@ -24,6 +24,54 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `categories`
+--
+
+CREATE TABLE `categories` (
+  `id` int(11) NOT NULL,
+  `category_name` varchar(100) DEFAULT NULL,
+  `status` tinyint(1) DEFAULT NULL,
+  `created_at` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`id`, `category_name`, `status`, `created_at`) VALUES
+(1, 'Drink', 1, '2021-03-29'),
+(2, 'Soft Drink', 1, '2021-03-29'),
+(3, 'Clothes', 1, '2021-03-29'),
+(4, 'Grocery', 1, '2021-03-29');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `products`
+--
+
+CREATE TABLE `products` (
+  `id` int(11) NOT NULL,
+  `name` varchar(200) NOT NULL,
+  `image` text NOT NULL,
+  `price` float NOT NULL,
+  `description` varchar(500) NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `status` tinyint(1) DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `user_id` int(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`id`, `name`, `image`, `price`, `description`, `category_id`, `status`, `created_at`, `user_id`) VALUES
+(1, 'Coca', 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png', 2, '', 1, 1, '0000-00-00 00:00:00', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -31,6 +79,7 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `username` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
+  `role` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -38,12 +87,24 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `email`, `password`) VALUES
-(1, 'mrrhak', 'admin@mrrhak.com', '$2y$10$UZyQDgtJftLOE8ViFM4cxekulBU8fE0lR6otOn567CyIa5UMhLDna');
+INSERT INTO `users` (`id`, `username`, `email`, `role`, `password`) VALUES
+(1, 'admin', 'admin@e-store.com', 'admin', '$2y$10$UQnLXWkEH7aFU8QwslWDcefFMCbxZ8.jwBrPP6TPbWnq.pB.y9jLO');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `users`
@@ -54,6 +115,18 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`
