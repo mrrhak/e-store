@@ -31,8 +31,8 @@ require_once '../app/helpers/Session.php';
 
         </ul>
 
-        //TODO: Check user
         <ul class="navbar-nav mb-2 mb-lg-0">
+        <?php if(!isset($user)) : ?>
         <li class="nav-item">
           <a href="<?= URLROOT ?>/users/login" class="btn btn-sm btn-outline-secondary" type="button">Sign In</a>
         <li>
@@ -40,9 +40,11 @@ require_once '../app/helpers/Session.php';
           <a href="<?= URLROOT ?>/users/register" class="btn btn-sm btn-success" type="button">Sign Up</a>
         <li>
 
+        <?php else : ?>
         <li class="nav-item ms-3">
           <a href="<?= URLROOT ?>/users/logout" class="btn btn-sm btn-danger" type="button">Sign Out</a>
         <li>
+        <?php endif ?>
 
         </ul>
       </div>
