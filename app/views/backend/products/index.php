@@ -1,6 +1,8 @@
 <?php 
 require_once APPROOT.'/views/backend/layouts/header.php';
+
  ?>
+ 
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -9,7 +11,13 @@ require_once APPROOT.'/views/backend/layouts/header.php';
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
+                
+                   <?php if(isLoggedIn()) : ?>
+                  
                     <h1>Products</h1>
+                     <?php
+                         endif
+                     ?>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -22,8 +30,6 @@ require_once APPROOT.'/views/backend/layouts/header.php';
         </div>
         <!-- /.container-fluid -->
     </section>
-
-
     <section class="content">
         <div class="card card-primary">
             <!-- /.card-header -->
