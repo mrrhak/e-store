@@ -21,6 +21,10 @@ class Controller
   // Load the view
   public function view($view, $data = [])
   {
+    foreach ($data as $key => $value) {
+      $$key = $value;
+    }
+
     if (file_exists('../app/views/' . $view . '.php')) {
       require_once '../app/views/' . $view . '.php';
     } else {
@@ -30,5 +34,6 @@ class Controller
         die('View does not exists.');
       }
     }
+    
   }
 }

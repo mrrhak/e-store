@@ -4,6 +4,7 @@ class User
 
   public string $username = '';
   public string $email = '';
+  public string $role = '';
 
   private Database $db;
 
@@ -21,10 +22,10 @@ class User
 
   public function register($data)
   {
-    print('Here');
-    $this->db->query("INSERT INTO users (username, email, password) VALUES (:username, :email, :password)");
+    $this->db->query("INSERT INTO users (username, email, role, password) VALUES (:username, :email, :role, :password)");
     $this->db->bind(':username', $data['username']);
     $this->db->bind(':email', $data['email']);
+    $this->db->bind(':role', $data['role'] ?? 'customer');
     $this->db->bind(':password', $data['password']);
 
     // Execute function
@@ -43,14 +44,13 @@ class User
     $this->db->bind(':username', $username);
 
     $row = $this->db->single();
-
-    $hashedPassword = $row->password;
-
-    if (password_verify($password, $hashedPassword)) {
-      return $row;
-    } else {
-      return false;
+    if($row){
+      $hashedPassword = $row->password;
+      if (password_verify($password, $hashedPassword)) {
+        return $row;
+      }
     }
+    return false;
   }
 
   public function findUserByEmail($email)
