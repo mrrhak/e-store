@@ -13,6 +13,18 @@ class Session
 
   public function get(string $key)
   {
-    return $_SESSION[$key];
+    if(isset($_SESSION[$key])){
+      return $_SESSION[$key];
+    }
+    return false;
+    
+  }
+
+  public function remove(string $key)
+  {
+    if(isset($_SESSION[$key])){
+       unset($_SESSION[$key]);
+    }
+    return false;
   }
 }

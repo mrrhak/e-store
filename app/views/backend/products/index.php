@@ -9,14 +9,7 @@ require_once APPROOT.'/views/backend/layouts/header.php';
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Products</h1>
-                </div>
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item"><a href="#">Layout</a></li>
-                        <li class="breadcrumb-item active">Fixed Layout</li>
-                    </ol>
+                    <h1><?= $title ?></h1>
                 </div>
             </div>
         </div>
@@ -60,7 +53,7 @@ require_once APPROOT.'/views/backend/layouts/header.php';
                             <label for="exampleInputEmail1">Select Category</label>
                             <div class="input-group mb-3">
                                 <select class="form-control pr-5">
-                                    <?php foreach ($data["categories"] as $key): ?>
+                                    <?php foreach ($categories as $key): ?>
                                     <option>
                                         <?php
                                          echo $key->category_name

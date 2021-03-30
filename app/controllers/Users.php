@@ -1,6 +1,7 @@
 <?php
 class Users extends Controller{
   public function __construct(){
+    parent::__construct();
     $this->userModel = $this->model('User');
   }
 
@@ -156,17 +157,15 @@ class Users extends Controller{
   }
 
   public function createUserSession($user){
-    $_SESSION['user_id'] = $user->id;
-    $_SESSION['username'] = $user->username;
-    $_SESSION['email'] = $user->email;
+    $this->session->set('user_id', $user->id);
+    $this->session->set('username', $user->username);
 
     header('location:'.URLROOT);
   }
 
   public function logout() {
-    unset($_SESSION['user_id']);
-    unset($_SESSION['username']);
-    unset($_SESSION['email']);
+    $this->session->remove('user_id');
+    $this->session->remove('username');
     header('location:' . URLROOT . '/users/login');
   }
 }
