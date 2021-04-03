@@ -1,43 +1,38 @@
 <!-- Main Navigation -->
-<header class="container-fluid" >
 
+<nav class="navbar-expand-lg navbar">
+    <div class="container-fluid header">
 
-<nav class="navbar navbar-expand-lg navbar-light shadow-md">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="<?php
-      APPROOT
-    ?>/e-store">
-    <img  src="<?php echo URLROOT ?>/img/logo.png" style="height: 50px">
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        
-        
-      </ul>
-      <ul class="navbar-nav  mb-2 mb-lg-0">
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
-      <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Cart</a>
-      </li>
-  
-          <a class="nav-item my-2" aria-current="page" href="#">
-          <i class="fas fa-user pull-right icon-chevron-right"></i>
-          <span> Log In</span>
-         
-          </a>
-     
-      
-      </ul>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse container m-auto navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item" style=" font-size : 25px ; color:#0d47a1">
+                    <a class="nav-link" href="#">E-STORE</a>
+                </li>
+
+            </ul>
+            <form class="me-auto search-header">
+                <input class="form-control me-2 input" type="search" placeholder="Search item" aria-label="Search">
+                <button class="btn" type="submit">Search</button>
+            </form>
+            <ul class="mb-2 mb-lg-0" style="display: flex">
+                <button class="btn">
+                    <i class="fa fa-shopping-cart">
+                        <span class="bage"> 0</spa>
+                    </i>
+                    Shoping Cart
+                </button>
+                <button class="btn">
+                    <i class="fa fa-user" style="margin-right:8px"></i>
+                    Login Or Create
+                </button>
+            </ul>
+        </div>
     </div>
-  </div>
 </nav>
-</header>
 <!-- Main Navigation -->
 
 <!--<header>
@@ -95,6 +90,6 @@
     
   
   </nav>-->
-  
- 
+
+
 <!--</header>-->
