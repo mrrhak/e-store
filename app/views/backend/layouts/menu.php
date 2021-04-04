@@ -1,128 +1,79 @@
-<!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <a href="#" class="brand-link">
-        <img src="<?= URLROOT ?>/img/AdminLTELogo.png" alt="E-Store Logo" class="brand-image img-circle elevation-3"
-            style="opacity: .8">
-        <span class="brand-text font-weight-light">E-Store</span>
-    </a>
-
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <!-- Sidebar user (optional) -->
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex d-flex-none">
-
-
-            <div class="user-block">
-                <img class="img-circle img-bordered-sm" src="<?= URLROOT ?>/img/user2-160x160.jpg" alt="User Image">
-                <span class="username">
-                    <a href="#">Mai veasna</a>
-                </span>
-                <span class="description">Online</span>
-            </div>
+  <a href="index3.html" class="brand-link">
+    <img src="public\backend\images\e-store-logo.png" alt="E Store" class="brand-image img-circle elevation-3" style="opacity: .8">
+    <span class="brand-text font-weight-light">E Store</span>
+  </a>
+  <div class="sidebar">
+    <div class="form-inline mt-2">
+      <div class="input-group" data-widget="sidebar-search">
+        <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+        <div class="input-group-append">
+          <button class="btn btn-sidebar">
+            <i class="fas fa-search fa-fw"></i>
+          </button>
         </div>
-
-        <!-- Sidebar Menu -->
-        <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <!-- Add icons to the links using the .nav-icon class
-            with font-awesome or any other icon font library -->
-                <li class="nav-item">
-                    <a href="<?= URLROOT ?>/dashboard" class="nav-link">
-                        <i class="nav-icon fas fa-tachometer-alt" aria-hidden="true"></i>
-                        <p class="ml-2">Dashboard</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="<?= URLROOT ?>/products" class="nav-link">
-                        <i class="nav-icon fa fa-sitemap" aria-hidden="true"></i>
-                        <p class="ml-2">Products</p>
-                    </a>
-                </li>
-                <!--<li class="nav-item">
-                    <a href="../widgets.html" class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
-                        <p>
-                            Widgets
-                            <span class="right badge badge-danger">New</span>
-                        </p>
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon far fa-plus-square"></i>
-                        <p>
-                            Extras
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>
-                                    Login & Register v1
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="../examples/login.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Login v1</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../examples/register.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Register v1</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../examples/forgot-password.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Forgot Password v1</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../examples/recover-password.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Recover Password v1</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-search"></i>
-                        <p>
-                            Search
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="../search/simple.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Simple Search</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="../search/enhanced.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Enhanced</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>-->
-
-
-            </ul>
-        </nav>
-        <!-- /.sidebar-menu -->
+      </div>
     </div>
-    <!-- /.sidebar -->
+    <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <li class="nav-header">SYSTEM</li>
+        <li class="nav-item">
+          <a href="dashboard" class="nav-link <?= $page == "dashboard" ? "active" : "" ?>">
+            <i class="nav-icon fas fa-tachometer-alt"></i>
+            <p>
+              Dashboard
+              <i class="right fas fa-angle-right"></i>
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-users"></i>
+            <p>
+              Users
+              <i class="right fas fa-angle-right"></i>
+            </p>
+          </a>
+        </li>
+        <li class="nav-header">MANAGEMENT</li>
+        <li class="nav-item">
+          <a href="products" class="nav-link <?= $page == "products" ? "active" : "" ?>">
+            <i class="nav-icon fas fa-box-open"></i>
+            <p>
+              Products
+              <i class="right fas fa-angle-right"></i>
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-th"></i>
+            <p>
+              Categories
+              <i class="right fas fa-angle-right"></i>
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-shopping-cart"></i>
+            <p>
+              Orders
+              <span class="badge badge-danger right">10</span>
+            </p>
+          </a>
+        </li>
+        <li class="nav-header">SUPPORT</li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-id-card"></i>
+            <p>
+              Contacts
+              <span class="badge badge-info right">2</span>
+            </p>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
 </aside>

@@ -15,7 +15,7 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="<?= URLROOT ?>/backend/css/adminlte.min.css">
 
-  <title><?= SITENAME ? SITENAME . (isset($data['title']) != null ? ' | ' . $data['title'] : '') : '' ?></title>
+  <title><?= SITENAME ? SITENAME . (isset($title) != null ? ' | ' . $title : '') : '' ?></title>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">

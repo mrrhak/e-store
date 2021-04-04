@@ -77,6 +77,13 @@ To get start
 public/index.php
 ```
 
+## Admin Dashboard Login /dashboard
+```txt
+Username: admin
+Password: 12345678
+Email: admin@e-store.com
+```
+
 ## Scope of projects
 
 ### Frontend Feature
