@@ -1,4 +1,3 @@
-
 <?php
 require_once '../app/helpers/Session.php';
 ?>
@@ -13,8 +12,10 @@ require_once '../app/helpers/Session.php';
         </button>
         <div class="collapse container m-auto navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
                 <li class="nav-item" style=" font-size : 25px ; color:#0d47a1">
-                    <a class="nav-link" href="#">E-STORE</a>
+                    <a class="nav-link" href="<?= URLROOT ?>">E-STORE</a>
+
                 </li>
 
             </ul>
@@ -29,13 +30,26 @@ require_once '../app/helpers/Session.php';
                     </i>
                     Shoping Cart
                 </button>
-                <button class="btn">
+
+                <?php if(!isset($user)) : ?>
+                <a class="btn" href="<?= URLROOT ?>/users/register">
                     <i class="fa fa-user" style="margin-right:8px"></i>
                     Login Or Create
-                </button>
+                </a>
+                <?php else : ?>
+                <a class="btn" href="<?= URLROOT ?>/users/register">
+                    <i class="fa fa-user" style="margin-right:8px"></i>
+                    Log Out
+                </a>
+                <?php endif ?>
+
+
             </ul>
         </div>
     </div>
+    <script>
+
+    </script>
 </nav>
 <!-- Main Navigation -->
 
