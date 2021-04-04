@@ -33,15 +33,12 @@
             "products" => $products,
             "categories" =>$categories,
         ];
-           
-      
         return $this->view('backend/products/index' , $data) ;
        }
        
-       
+       //create products
         public function create()
         {
-                
             $categories = $this->categoryModel->getAllCategory() ;
             $products =  $this->productModel->getAllProduct();
            
@@ -74,15 +71,39 @@
            
        ] ;
        
+    //   header('Content-type: application/json');
        if($_SERVER["REQUEST_METHOD"] == "POST"){
-        die("It Work") ;
+        $_POST = filter_input_array(INPUT_POST , FILTER_SANITIZE_STRING)  ;
+            
+       $dataProducts = [
+        "name"=> trim($_POST["name"]) ,
+        'image' => trim($_POST["image"]) ,
+        "price" => trim($_POST["price"]) ,
+        "description" => trim($_POST["description"]) ,
+       "status" => "1" ,
+       "category_id" => trim($_POST["category_id"]) ,
+       "user_id" => $this->session->get('user_id'),
+        //Error Message
+       "nameError" => "" ,
+        'imageError' => "" ,
+        "priceError" => "" ,
+        "descriptionError" => "" ,
+       "statusError" => "" ,
+       "categoryIdError" => "" ,
+        "createdAtError" => "" ,
+        "userIdError" => "",
+          ] ;
+   
        }
+       
+       var_dump($dataProducts) ;
    
         $data = [
             "page" => "products/create", // For make menu active link,
             'title' => 'Products/Create', // For make title,
             'user' => $this->user ?? null, // User auth for use admin dashboard,
-            "products" => $dataProducts
+            "products" => $dataProducts,
+            "categories" =>$categories,
         ];
             return  $this->view("backend/products/create" , $data);
         }

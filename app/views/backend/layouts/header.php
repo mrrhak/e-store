@@ -17,6 +17,14 @@
         integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
         crossorigin="anonymous" />
   <link rel="stylesheet" href="<?= URLROOT ?>/backend/css/adminlte.min.css">
+  <!-- SweetAlert2 -->
+  <link rel="stylesheet" href="<?= URLROOT ?>/backend/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+  <!-- Toastr -->
+  <link rel="stylesheet" href="<?= URLROOT ?>/backend/plugins/toastr/toastr.min.css">
+    <!-- DataTables -->
+  <link rel="stylesheet" href="<?= URLROOT ?>/backend/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="<?= URLROOT ?>/backend/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="<?= URLROOT ?>/backend/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 
   <title><?= SITENAME ? SITENAME . (isset($title) != null ? ' | ' . $title : '') : '' ?></title>
 </head>
