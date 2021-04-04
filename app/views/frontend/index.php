@@ -11,9 +11,6 @@
   // End Header
 ?>
 
-<?php
-   $menu = array("Clothes", "Eletronic", "Toys", "Machince");
-?>
 <!-- Begin page content -->
 <main class="flex-shrink-0">
 
@@ -21,6 +18,7 @@
     <div class="container py-3 m-auto header-filter-button"
         style="overflow-x:scroll; display: block; overflow-x: auto; white-space: nowrap">
         <?php
+        $menu = array("Clothes", "Eletronic", "Toys", "Machince" ,"Clothes", "Eletronic", "Toys", "Machince" , "Clothes", "Eletronic", "Toys", "Machince");
            foreach ($menu as $key => $value) : ?>
         <button class="btn-menu px-4 py-2 bg-red mx-2">
             <?php

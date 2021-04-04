@@ -37,9 +37,12 @@ require_once '../app/helpers/Session.php';
                     Login Or Create
                 </a>
                 <?php else : ?>
-                <a class="btn" href="<?= URLROOT ?>/users/register">
+                <a class="btn" href="<?= URLROOT ?>/dashboard">
                     <i class="fa fa-user" style="margin-right:8px"></i>
-                    Log Out
+                    My Account
+                </a>
+                <a class="btn" href="<?= URLROOT ?>/users/register">
+                <i class="fas fa-sign-out-alt" style="font-size:20px"></i>
                 </a>
                 <?php endif ?>
 
