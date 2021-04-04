@@ -15,7 +15,7 @@
           unset($url[0]);
         }
         else{
-          $this->currentController = 'AppError';
+          $this->currentController = 'Apperror';
         }
       }
 
