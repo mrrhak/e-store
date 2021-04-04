@@ -27,7 +27,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link">
+          <a href="manageusers" class="nav-link <?= $page == "ManageUsers" ? "active" : "" ?>">
             <i class="nav-icon fas fa-users"></i>
             <p>
               Users
