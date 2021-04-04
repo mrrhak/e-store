@@ -26,14 +26,65 @@
        {
         $products =  $this->productModel->getAllProduct();
         $categories = $this->categoryModel->getAllCategory() ;
-         $data = [
-             'title' => 'Admin Products', // For make title
-             "page" => "products", // For make menu active link
-             'user' => $this->user ?? null, // User auth for use admin dashboard
-             "products" => $products,
-             "categories" =>$categories,
-         ];
+        $data = [
+            'title' => 'Products/Create', // For make title
+            "page" => "products/create", // For make menu active link
+            'user' => $this->user ?? null, // User auth for use admin dashboard
+            "products" => $products,
+            "categories" =>$categories,
+        ];
+           
+      
         return $this->view('backend/products/index' , $data) ;
        }
+       
+       
+        public function create()
+        {
+                
+            $categories = $this->categoryModel->getAllCategory() ;
+            $products =  $this->productModel->getAllProduct();
+           
+         $dataPage = [
+            'title' => 'Admin Products', // For make title
+            "page" => "products", // For make menu active link
+            'user' => $this->user ?? null, // User auth for use admin dashboard
+            "products" => $products,
+            "categories" =>$categories,
+        ];
+       
+       $dataProducts = [
+            "name"=> "" ,
+            'image' => "" ,
+            "price" => "" ,
+            "description" => "" ,
+           "status" => "" ,
+           "category_id" => "" ,
+            "created_at" => "" ,
+            "user_id" => "",
+            //Error Message
+           "nameError" => "" ,
+            'imageError' => "" ,
+            "priceError" => "" ,
+            "descriptionError" => "" ,
+           "statusError" => "" ,
+           "categoryIdError" => "" ,
+            "createdAtError" => "" ,
+            "userIdError" => "",
+           
+       ] ;
+       
+       if($_SERVER["REQUEST_METHOD"] == "POST"){
+        die("It Work") ;
+       }
+   
+        $data = [
+            "page" => "products/create", // For make menu active link,
+            'title' => 'Products/Create', // For make title,
+            'user' => $this->user ?? null, // User auth for use admin dashboard,
+            "products" => $dataProducts
+        ];
+            return  $this->view("backend/products/create" , $data);
+        }
    }
 ?>
