@@ -20,6 +20,10 @@
   <script src="<?= URLROOT ?>/backend/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- overlayScrollbars -->
   <script src="<?= URLROOT ?>/backend/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+  <!-- SweetAlert2 -->
+  <script src="<?= URLROOT ?>/backend/plugins/sweetalert2/sweetalert2.min.js"></script>
+  <!-- Toastr -->
+  <script src="<?= URLROOT ?>/backend/plugins/toastr/toastr.min.js"></script>
   <!-- AdminLTE App -->
   <script src="<?= URLROOT ?>/backend/js/adminlte.min.js"></script>
 

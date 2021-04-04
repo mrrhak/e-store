@@ -5,6 +5,251 @@ class Users extends Controller{
     $this->userModel = $this->model('User');
   }
 
+  public function ajaxDetail($id)
+  {
+    header('Content-type: application/json');
+    $user = $this->userModel->findUserById($id);
+    http_response_code(200);
+    echo json_encode($user);
+  }
+
+  public function ajaxUpdate($id){
+
+    header('Content-type: application/json');
+
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+      // Santize post data
+      $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+      $errors = [];
+      
+      $nameValidation = "/^[a-zA-Z0-9]*$/";
+
+      // Get User for check
+      $user = $this->userModel->findUserById($id);
+      
+      if($user){
+        
+        $inputUsername = strtolower(trim($_POST['username']));
+        // Validate username on letter/number
+        if(empty($inputUsername)){
+          $errors['usernameError'] = 'Please enter username';
+        }
+        elseif(!preg_match($nameValidation, $inputUsername)){
+          $errors['usernameError'] = 'Username can only contain letters and numbers without space';
+        }
+        else{
+          // If username change
+          if(strcmp($user->username, $inputUsername) != 0){
+            // Check if username exists
+            if($this->userModel->findUserByUsername($inputUsername)){
+              $errors['usernameError'] = 'Username is already taken';
+            }
+          }
+        }
+
+        $inputEmail = strtolower(trim($_POST['email']));
+        // Validate email
+        if(empty($inputEmail)){
+          $errors['emailError'] = 'Please enter email address';
+        }
+        elseif(!filter_var($inputEmail, FILTER_VALIDATE_EMAIL)){
+          $errors['emailError'] = 'Please enter the correct email';
+        }
+        else{
+          // If username change
+          if(strcmp($user->email, $inputEmail) != 0){
+            // Check if email exists
+            if($this->userModel->findUserByEmail($inputEmail)){
+              $errors['emailError'] = 'Email is already taken';
+            }
+          }
+        }
+
+        $inputPassword = trim($_POST['password']);
+        // If Change
+        if(!empty($inputPassword)){
+          // Validate password on length and numeric value
+          if(strlen($inputPassword) < 6){
+            $errors['passwordError'] = 'Password must be at least 6 characters';
+          }
+          else{
+            // New password will save to db
+             $inputPassword = password_hash($inputPassword, PASSWORD_DEFAULT);
+          }
+        }
+        else{
+          // Old password will save to db
+          $inputPassword = $user->password;
+        }
+
+        $inputRole = strtolower(trim($_POST['role']));
+        if(empty($inputRole)){
+          $errors['roleError'] = 'Please select a role';
+        }
+
+        // If have any errors
+        if(!empty($errors)){
+          http_response_code(404);
+          echo json_encode([
+              'errors' => $errors
+          ]);
+        }
+        else{
+          // Everything is OK
+          $data = [
+            'username' => $inputUsername,
+            'email' => $inputEmail,
+            'password' => $inputPassword,
+            'role' => $inputRole,
+          ];
+          
+          if($this->userModel->updateById($data, $id)){
+            // Redirect to the login page
+            http_response_code(202);
+            echo json_encode($data);
+          }
+          else{
+            http_response_code(404);
+            echo json_encode(['message'=> 'Failed to update user']);
+          }
+        }
+      }
+      else{
+        http_response_code(404);
+        echo json_encode(['message'=> 'Failed to update user or it was deleted']);
+      }
+    }
+    else{
+      http_response_code(404);
+      echo json_encode(['message'=> 'Failed']);
+    }
+  }
+
+  public function ajaxDelete($id){
+
+    header('Content-type: application/json');
+
+    if($_SERVER['REQUEST_METHOD'] == 'DELETE'){
+      $errors = [];
+
+      if(!isset($id)){
+        $errors['deleteError'] = 'Please provide spacific user to delete';
+      }
+      // Make sure that errors are empty
+      if(empty($errors)){
+        if($this->userModel->deleteById($id)){
+          http_response_code(201);
+          echo json_encode([
+            'message' => 'User deleted successfully',
+          ]);
+        }
+        else{
+          http_response_code(404);
+          $errors['deleteError'] = 'Failed to delete user';
+          echo json_encode([
+            'errors' => $errors
+        ]);
+        }
+      }
+      else{
+        http_response_code(404);
+        echo json_encode([
+            'errors' => $errors
+        ]);
+      }
+
+    }
+    else{
+      http_response_code(404);
+      echo json_encode(['message'=> 'Failed']);
+    }
+  }
+
+  public function ajaxRegister(){
+
+    header('Content-type: application/json');
+
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+      // Santize post data
+      $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+      $data = [
+        'username' => strtolower(trim($_POST['username'])),
+        'email' => strtolower(trim($_POST['email'])),
+        'password' => trim($_POST['password']),
+        'role' => strtolower(trim($_POST['role'])),
+      ];
+
+      $errors = [];
+      
+      $nameValidation = "/^[a-zA-Z0-9]*$/";
+
+      // Validate username on letter/number
+      if(empty($data['username'])){
+        $errors['usernameError'] = 'Please enter username';
+      }
+      elseif(!preg_match($nameValidation, $data['username'])){
+        $errors['usernameError'] = 'Username can only contain letters and numbers without space';
+      }
+      else{
+        // Check if username exists
+        if($this->userModel->findUserByUsername($data['username'])){
+          $errors['usernameError'] = 'Username is already taken';
+        }
+      }
+
+
+      // Validate email
+      if(empty($data['email'])){
+        $errors['emailError'] = 'Please enter email address';
+      }
+      elseif(!filter_var($data['email'], FILTER_VALIDATE_EMAIL)){
+        $errors['emailError'] = 'Please enter the correct email';
+      }
+      else{
+        // Check if email exists
+        if($this->userModel->findUserByEmail($data['email'])){
+          $errors['emailError'] = 'Email is already taken';
+        }
+      }
+
+      // Validate password on length and numeric value
+      if(empty($data['password'])){
+        $errors['passwordError'] = 'Please enter password';
+      }
+      elseif(strlen($data['password']) < 6){
+        $errors['passwordError'] = 'Password must be at least 6 characters';
+      }
+
+      if(empty($_POST['role'])){
+        $errors['roleError'] = 'Please select a role';
+      }
+
+      // Make sure that errors are empty
+      if(empty($errors)){
+        // Hash password
+        $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+        // Register user from model function
+        if($this->userModel->register($data)){
+          // Redirect to the login page
+          http_response_code(201);
+          echo json_encode($data);
+        }
+      }
+      else{
+        http_response_code(404);
+        echo json_encode([
+            'errors' => $errors
+        ]);
+      }
+
+    }
+    else{
+      http_response_code(404);
+      echo json_encode(['message'=> 'Failed']);
+    }
+  }
+
   public function register(){
     $data = [
       'title' => 'Register',
@@ -21,11 +266,10 @@ class Users extends Controller{
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
       // Santize post data
       $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-      print($_POST['username']);
       $data = [
         'title' => 'Register',
-        'username' => trim($_POST['username']),
-        'email' => trim($_POST['email']),
+        'username' => strtolower(trim($_POST['username'])),
+        'email' => strtolower(trim($_POST['email'])),
         'password' => trim($_POST['password']),
         'confirmPassword' => trim($_POST['confirmPassword']),
         'usernameError' => '',
@@ -35,14 +279,19 @@ class Users extends Controller{
       ];
       
       $nameValidation = "/^[a-zA-Z0-9]*$/";
-      $passwordValidation = "/^(.{0,7}|[^a-z]*|[^\d]*)$/i";
 
       // Validate username on letter/number
       if(empty($data['username'])){
         $data['usernameError'] = 'Please enter username';
       }
       elseif(!preg_match($nameValidation, $data['username'])){
-        $data['usernameError'] = 'Name can only contain letters and numbers';
+        $data['usernameError'] = 'Name can only contain letters and numbers without space';
+      }
+      else{
+        // Check if username exists
+        if($this->userModel->findUserByUsername($data['username'])){
+          $data['usernameError'] = 'Username is already taken';
+        }
       }
 
       // Validate email
@@ -65,9 +314,6 @@ class Users extends Controller{
       }
       elseif(strlen($data['password']) < 6){
         $data['passwordError'] = 'Password must be at least 6 characters';
-      }
-      elseif(!preg_match($passwordValidation, $data['password'])){
-        $data['passwordError'] = 'Password must have at least one numeric value';
       }
 
       // Validate confirm password on length and numeric value
