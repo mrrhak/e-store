@@ -1,5 +1,5 @@
 <?php
-   class ManageUsers extends Controller{
+   class Manageusers extends Controller{
        private ?User $user = null;
 
        public function __construct()
