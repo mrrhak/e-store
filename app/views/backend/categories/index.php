@@ -9,7 +9,7 @@ require_once APPROOT.'/views/backend/layouts/header.php';
         <div class="card card-primary">
             <!-- /.card-header -->
             <div class=" w-100 d-flex justify-content-between py-2 px-4 bg-primary ">
-                <h2 class="">Product List</h2>
+                <h2 class="">Categories List</h2>
                 <button type="button" data-toggle="modal" data-target="#modalAddProducts"
                     class="px-3 btn btn-warning text-white font-bold">
                     <i class="fa fa-plus mr-2" style="font-size: 14px;"></i>
@@ -21,35 +21,29 @@ require_once APPROOT.'/views/backend/layouts/header.php';
                     <thead class="w-100 bg-gray border-0">
                         <tr>
                             <th scope="col">#No</th>
-                            <th scope="col">Image</th>
                             <th scope="col">Name</th>
-                            <th scope="col">Qty</th>
-                            <th scope="col">Price</th>
-                            <th scope="col">Category</th>
+                            <th scope="col">Created By</th>
+                            <th scope="col">Created_at</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody class="col-100">
                         <?php
-                        foreach ($data["products"] as $key => $value) :
+                        foreach ($data["categories"] as $key => $value) :
                     ?>
                         <tr class="">
                             <th class="pt-4">
                                 <?= $key ?>
                             </th>
-                            <td>
-                                <img style="width:100px ; height:100px; ; object-fit:cover ; border-radius:10px"
-                                    src="public/img/<?=$value->image ?>">
-                            </td>
-                            <td class="pt-4"><?= $value->name ?></td>
-                            <td class="pt-4"><?= $value->qty ?></td>
-                            <td class="pt-4"> <?= $value->price ?></td>
-                            <td class="pt-4"><?= $value->category_name?></td>
+                            <td class="pt-4"><?= $value->category_name ?></td>
+                            <td class="pt-4"> <?= $value->username ?></td>
+                            <td class="pt-4"> <?= $value->created_at ?></td>
+
                             <td class="pt-4">
                                 <button class=" btn btn-warning py-1 px-3 mx-2 text-white update"
-                                    onClick="changeButtonEdit()" id="<?= $value->id ?>">Edit</button>
+                                    onClick="changeButtonEdit()" id="<?= $value->cate_id ?>">Edit</button>
                                 <button class="btn btn-danger py-1 px-3 mx-2  delete" onClick="changeButtonDelete()"
-                                    id="<?= $value->id ?>">Delete</button>
+                                    id="<?= $value->cate_id ?>">Delete</button>
                             </td>
                         </tr>
                         <?php

@@ -48,7 +48,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="categories"
+                        class="nav-link <?php echo $page == "category" || $page =="categories/create" ? "active" : "" ?>">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                             Categories
