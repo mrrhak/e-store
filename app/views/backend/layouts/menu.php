@@ -58,6 +58,16 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="banners"
+                        class="nav-link <?php echo $page == "banners" || $page =="Banners/Create" ? "active" : "" ?>">
+                        <i class="nav-icon fas fa-images"></i>
+                        <p>
+                            Banners
+                            <i class="right fas fa-angle-right"></i>
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-shopping-cart"></i>
                         <p>
