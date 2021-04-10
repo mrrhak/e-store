@@ -92,26 +92,26 @@
     
         if(!in_array($_FILES[$file]['type'], $acceptable) && (!empty($_FILES[$file]["type"]))) {
         $errors = 'Invalid file type. Only PDF, JPG, GIF and PNG types are accepted.';
+        }
+        
+        if(empty($errors)) {
+            move_uploaded_file($_FILES[$file]['tmp_name'],  $_SERVER['DOCUMENT_ROOT']."/e-store/public/img/".$_FILES[$file]['name']);
+              $temp = $_FILES[$file]['name'] ;
+            return [
+                'name' => $temp ,
+                'success' => true
+              ];
+          } else {
+            return [
+              'errors' => $errors,
+              'success' =>  false
+            ];
+          }
+        }
+    
     }
     
-    if(empty($errors)) {
-        move_uploaded_file($_FILES[$file]['tmp_name'],  $_SERVER['DOCUMENT_ROOT']."/e-store/public/img/".$_FILES[$file]['name']);
-          $temp = $_FILES[$file]['name'] ;
-        return [
-            'name' => $temp ,
-            'success' => true
-          ];
-      } else {
-        return [
-          'errors' => $errors,
-          'success' =>  false
-        ];
-    }
-    }
-    
-    }
-    
-  //update function 
+
 
   
    }

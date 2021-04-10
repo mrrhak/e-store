@@ -10,14 +10,14 @@ require_once APPROOT.'/views/backend/layouts/header.php';
             <!-- /.card-header -->
             <div class=" w-100 d-flex justify-content-between py-2 px-4 bg-primary ">
                 <h2 class="">Categories List</h2>
-                <button type="button" data-toggle="modal" data-target="#modalAddProducts"
+                <button type="button" data-toggle="modal" data-target="#modalAddCategory"
                     class="px-3 btn btn-warning text-white font-bold">
                     <i class="fa fa-plus mr-2" style="font-size: 14px;"></i>
                     Add New
                 </button>
             </div>
             <div class="col-12 mt-4 pb-4 px-4">
-                <table class="table w-100" id="product-table">
+                <table class="table w-100" id="category-table">
                     <thead class="w-100 bg-gray border-0">
                         <tr>
                             <th scope="col">#No</th>
@@ -60,68 +60,23 @@ require_once APPROOT.'/views/backend/layouts/header.php';
 
 <!--add data of product-->
 <section>
-    <div class="modal fade" id="modalAddProducts" tabindex="-1" role="dialog" aria-labelledby="modalAddProducts"
+    <div class="modal fade" id="modalAddCategory" tabindex="-1" role="dialog" aria-labelledby="modalAddCategory"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title text-bold">New Product</h3>
+                    <h3 class="modal-title text-bold">New Category</h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form id="formModalAddProduct" method="POST" enctype="multipart/form-data">
+                <form id="formModalAddCategory" method="POST" enctype="multipart/form-data">
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="name" class="col-form-label">Name <span class="text-red ml-1">*</span></label>
-                            <input type="text" id="name" name="name" class="form-control"
-                                placeholder="Enter product name">
+                            <input type="text" id="category_name" name="category_name" class="form-control"
+                                placeholder="Enter  category name">
                         </div>
-                        <div class="form-group">
-                            <label for="price" class="col-form-label">Price<span class="text-red ml-1">*</span> </label>
-                            <input type="number" id="price" class="form-control" name="price" placeholder="Enter price">
-                        </div>
-                        <div class="form-group">
-                            <label for="qty" class="col-form-label">Qty <span class="text-red ml-1">*</span></label>
-                            <input type="number" id="qty" class="form-control" name="qty" placeholder="Enter qty">
-                        </div>
-                        <div class="form-group">
-                            <label for="category">Select Category</label>
-                            <div class="input-group mb-3">
-                                <select class="form-control pr-5" name="category_id" id="category_id">
-                                    <?php foreach ($categories as $key): ?>
-                                    <option value="<?php echo $key->cate_id ?>">
-                                        <?php
-                                         echo $key->category_name
-                                       ?>
-                                    </option>
-                                    <?php endforeach; ?>
-                                </select>
-                                <!--<span class="input-group-append">
-                                    <button type="button" class="btn btn-primary" data-toggle="modal"
-                                        data-target="#CategoryModal" data-whatever="+">+</button>
-                                </span>-->
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="file-upload" class="custom-file-upload">Image<span
-                                    class="text-red ml-1">*</span> </label>
-                            <div class="input-group">
-                                <label for="file-upload" class="custom-file-upload border px-2 w-100 mt-1"
-                                    style="padding:6px 0px ; border-radius:5px">
-                                    <i class="fa fa-upload"></i> Upload Image
-                                </label>
-                                <input id="file-upload" class="file_upload" name='image' type="file"
-                                    style="display:none;">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-form-label">Desciption</label>
-                            <textarea class="form-control" id="description" name="description">
-
-                            </textarea>
-                        </div>
-
                     </div>
                     <div class="modal-footer w-100 d-flex justify-between">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -136,70 +91,23 @@ require_once APPROOT.'/views/backend/layouts/header.php';
 <!--update data of product -->
 
 <section>
-    <div class="modal fade" id="modalUpdateProduct" tabindex="-1" role="dialog" aria-labelledby="modalUpdateProduct"
+    <div class="modal fade" id="modalUpdateCategory" tabindex="-1" role="dialog" aria-labelledby="modalUpdateCategory"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title text-bold">Update product</h3>
+                    <h3 class="modal-title text-bold">Update Category</h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form id="formModalUpdateProduct" action="" method="POST" enctype="multipart/form-data">
+                <form id="formModalUpdateCategory" action="" method="POST" enctype="multipart/form-data">
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="name" class="col-form-label">Name <span class="text-red ml-1">*</span></label>
-                            <input type="text" name="name" id="edit_name" class="form-control"
+                            <input type="text" name="edit_category_name" id="edit_category_name" class="form-control"
                                 placeholder="Enter product name">
                         </div>
-                        <div class="form-group">
-                            <label for="price" class="col-form-label">Price<span class="text-red ml-1">*</span></label>
-                            <input type="number" class="form-control" name="price" id="edit_price"
-                                placeholder="Enter price">
-                        </div>
-                        <div class="form-group">
-                            <label for="qty" class="col-form-label">Qty <span class="text-red ml-1">*</span></label>
-                            <input type="number" class="form-control" name="qty" id="edit_qty" placeholder="Enter qty">
-                        </div>
-                        <div class="form-group">
-                            <label for="category">Select Category</label>
-                            <div class="input-group mb-3">
-                                <select class="form-control pr-5" name="category_id" id="edit_category_id">
-                                    <?php foreach ($categories as $key): ?>
-                                    <option value="<?php echo $key->cate_id ?>">
-                                        <?php
-                                         echo $key->category_name
-                                       ?>
-                                    </option>
-                                    <?php endforeach; ?>
-                                </select>
-                                <!--<span class="input-group-append">
-                                    <button type="button" class="btn btn-primary" data-toggle="modal"
-                                        data-target="#CategoryModal" data-whatever="+">+</button>
-                                </span>-->
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="file-upload" class="custom-file-upload">Image <span
-                                    class="text-red ml-1">*</span></label>
-                            <div class="input-group">
-                                <label for="edit_file_upload" class="custom-file-upload border px-2 w-100 mt-1"
-                                    style="padding:6px 0px ; border-radius:5px">
-                                    <i class="fa fa-upload" id="temp_edit_image"></i> Upload Image
-                                </label>
-                                <input name='image' id="edit_file_upload" type="file" style="display:none;"
-                                    class="edit_file_upload">
-                                <input type="text" name="title_image" id="title_image" class="d-none">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-form-label">Desciption</label>
-                            <textarea class="form-control" name="description" id="edit_description">
-
-                            </textarea>
-                        </div>
-
                     </div>
                     <div class="modal-footer w-100 d-flex justify-between">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -214,17 +122,17 @@ require_once APPROOT.'/views/backend/layouts/header.php';
 <!--delete product data -->
 
 <section>
-    <div class="modal fade" id="modalDeleteProduct" tabindex="-1" role="dialog" aria-labelledby="modalDeleteProduct"
+    <div class="modal fade" id="modalDeleteCategory" tabindex="-1" role="dialog" aria-labelledby="modalDeleteCategory"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title text-bold">Delete product</h3>
+                    <h3 class="modal-title text-bold">Delete Category</h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form id="formModalDeleteProduct" action="" method="DELETE">
+                <form id="formModalDeleteCategory" action="" method="DELETE">
                     <label class="modal-body" id="status_delete"></label>
                     <div class="modal-footer w-100 d-flex justify-between">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
@@ -260,7 +168,7 @@ var Toast = Swal.mixin({
     timer: 3000
 })
 
-$('#product-table').DataTable({
+$('#category-table').DataTable({
     "paging": true,
     "lengthChange": true,
     "searching": true,
@@ -270,26 +178,12 @@ $('#product-table').DataTable({
 });
 
 //Handle click  button add product
-$("#formModalAddProduct").submit(function(e) {
+$("#formModalAddCategory").submit(function(e) {
 
     e.preventDefault();
-    var name = $("#name").val();
-    var price = $("#price").val();
-    var category_id = $("#category_id").val();
-    var qty = $("#qty").val();
-    var description = $("#description").val();
-    var extension = $("#file-upload").val().split(".").pop().toLowerCase();
-
-    if (extension != '') {
-        if (jQuery.inArray(extension, ['gif', 'png', 'jpg', "jpeg"]) == -1) {
-            alert("Invalid Image file");
-            $("#file-upload").val('');
-            return false;
-        }
-
-    }
+    var category_name = $("#category_name").val();
     $.ajax({
-        url: '<?= URLROOT ?>/products/create',
+        url: '<?= URLROOT ?>/categories/create',
         method: "POST",
         dataType: "json",
         data: new FormData(this),
@@ -297,14 +191,13 @@ $("#formModalAddProduct").submit(function(e) {
         processData: false,
         success: function(data) {
 
-            $('#formModalAddProduct')[0].reset();
-            $("#modalAddProducts").modal("hide");
+            $('#formModalAddCategory')[0].reset();
+            $("#modalAddCategory").modal("hide");
             Toast.fire({
                 icon: 'success',
-                title: 'Products ' + data.name + ' added successfully.'
+                title: 'Category' + data.category_name + ' added successfully.'
             });
             location.reload();
-
         },
         error: function(response) {
             var errors = response.responseJSON?.errors;
@@ -326,50 +219,43 @@ var changeButtonEdit = function(event) {
 }
 
 ////Handle click button update product
-var product_id;
+var cate_id;
 $(document).on("click", `${[".update" , ".delete" ]}`, function(event) {
-    product_id = $(this).attr("id");
+    cate_id = $(this).attr("id");
     $.ajax({
-        url: '<?= URLROOT ?>/products/productDetail/' + product_id,
+        url: '<?= URLROOT ?>/categories/categoryDetail/' + cate_id,
         method: "POST",
         data: {},
         dataType: "json",
         success: function(data) {
             if (btnChange === "edit") {
-                $("#modalUpdateProduct").modal("show");
-                $("#edit_name").val(data.name);
-                $("#edit_price").val(data.price);
-                $("#edit_qty").val(data.qty);
-                $("#title_image").val(data.image);
-                $("#edit_file_upload").prev('label').clone();
-                $("#edit_file_upload").prev('label').text(data.image);
-                $("#edit_description").val(data.description);
-                $("#edit_category_id option[value='" + data.category_id + "']").prop('selected',
-                    true);
+                $("#modalUpdateCategory").modal("show");
+                $("#edit_category_name").val(data.category_name);
             } else {
-                $("#modalDeleteProduct").modal("show");
-                $("#status_delete").text("Do you want to delete " + data.name + "?").addClass(
-                    "text-red")
+                $("#modalDeleteCategory").modal("show");
+                $("#status_delete").text("Do you want to delete " + data.category_name + "?")
+                    .addClass(
+                        "text-red")
 
             }
         }
 
     })
 })
-$("#formModalUpdateProduct").submit(function(event) {
+$("#formModalUpdateCategory").submit(function(event) {
     event.preventDefault();
     $.ajax({
-        url: '<?= URLROOT ?>/products/updateProduct/' + Number(product_id),
+        url: '<?= URLROOT ?>/categories/updateCategory/' + Number(cate_id),
         method: "POST",
         dataType: "json",
         data: new FormData(this),
         contentType: false,
         processData: false,
         success: function(response) {
-            $("#modalUpdateProduct").modal("hide");
+            $("#modalUpdateCategory").modal("hide");
             Toast.fire({
                 icon: "success",
-                title: 'Products ' + response.name + ' updated successfully.'
+                title: 'Category ' + response.category_name + ' updated successfully.'
             })
             location.reload()
         },
@@ -383,20 +269,20 @@ $("#formModalUpdateProduct").submit(function(event) {
 })
 
 ////Handle click button  delete product
-$("#formModalDeleteProduct").submit(function(event) {
+$("#formModalDeleteCategory").submit(function(event) {
     event.preventDefault();
     $.ajax({
-        url: '<?= URLROOT ?>/products/deleteProduct/' + product_id,
+        url: '<?= URLROOT ?>/categories/deleteCategory/' + cate_id,
         type: "DELETE",
         dataType: "json",
         data: {},
         contentType: false,
         processData: false,
         success: function(response) {
-            $("#modalDeleteProduct").modal("hide");
+            $("#modalDeleteCategory").modal("hide");
             Toast.fire({
                 icon: "success",
-                title: "Product deteted",
+                title: "Category deteted",
             })
             location.reload()
         },
