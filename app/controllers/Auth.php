@@ -9,9 +9,10 @@ class Auth extends Controller
 
     if ($userId = $this->session->get('user_id')) {
       $result =  $this->user->findUserById($userId);
-       $this->user->username = $result->username;
-       $this->user->email = $result->email;
-       $this->user->role = $result->role;
+      $this->authUser = $result;
+      if( $this->authUser == null){
+        header('location: ' . URLROOT.'/auth/logout');
+      }
        if($this->user->role == 'admin'){
         header('location: ' . URLROOT.'/dashboard');
        }

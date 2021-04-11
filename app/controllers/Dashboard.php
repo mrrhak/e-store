@@ -3,6 +3,7 @@ class Dashboard extends Controller
 {
 
   private ?User $user = null;
+  private $authUser;
 
   public function __construct()
   {
@@ -10,10 +11,11 @@ class Dashboard extends Controller
     if ($userId = $this->session->get('user_id')) {
       $this->user = $this->model('User');
       $result =  $this->user->findUserById($userId);
-      $this->user->username = $result->username;
-      $this->user->email = $result->email;
-      $this->user->role = $result->role;
-      if($this->user->role != 'admin'){
+      $this->authUser = $result;
+      if( $this->authUser == null){
+        header('location: ' . URLROOT.'/auth/logout');
+      }
+      if($this->authUser->role != 'admin'){
         header('location: ' . URLROOT);
       }
     } else {
@@ -26,7 +28,7 @@ class Dashboard extends Controller
     $data = [
       'title' => 'Admin Dashboard', // For make title
       'page' => 'dashboard', // For make menu active link
-      'user' => $this->user ?? null,
+      'user' => $this->authUser ?? null,
     ];
     $this->view('backend/dashboard', $data);
   }

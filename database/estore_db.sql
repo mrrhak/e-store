@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Apr 10, 2021 at 03:58 PM
--- Server version: 10.4.18-MariaDB
--- PHP Version: 7.4.16
+-- Host: 127.0.0.1
+-- Generation Time: Apr 11, 2021 at 06:31 PM
+-- Server version: 10.4.13-MariaDB
+-- PHP Version: 7.4.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,29 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `estore_db`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `banners`
---
-
-CREATE TABLE `banners` (
-  `banner_id` int(11) NOT NULL,
-  `title` varchar(300) NOT NULL,
-  `image` varchar(1000) NOT NULL,
-  `category_id` int(11) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `user_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `banners`
---
-
-INSERT INTO `banners` (`banner_id`, `title`, `image`, `category_id`, `created_at`, `user_id`) VALUES
-(2, 'Tesla Banner 202', 'lambo.jpeg', 7, '2021-04-10 15:57:33', 11),
-(3, 'Khmer Car 2020', 'tesla.jpeg', 10, '2021-04-10 13:57:05', 11);
 
 -- --------------------------------------------------------
 
@@ -116,18 +93,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `role`) VALUES
-(11, 'maiveasna10', 'maiveasna10@gmail.com', '$2y$10$sJEwoNHq//Eqlk1bNGlrOu7x.PFNDbiCmO3J7Ndfel18D8TwXMkyW', 'admin'),
-(12, 'maiveasna', 'maiveasna@gmail.com', '$2y$10$mgNoXndEga1kryOgIYFsouP.Azo7ow9qY0L.rUfj0.wSx1SIAYJ0W', 'admin');
+(1, 'admin', 'admin@e-store.com', '$2y$10$ouL..l1dq9rPs.08PqCtZOkW.sQ4EvQNevv5oMSEgTdhiZC1nbJ0W', 'admin');
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `banners`
---
-ALTER TABLE `banners`
-  ADD PRIMARY KEY (`banner_id`);
 
 --
 -- Indexes for table `categories`
@@ -152,12 +122,6 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `banners`
---
-ALTER TABLE `banners`
-  MODIFY `banner_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
@@ -173,7 +137,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
