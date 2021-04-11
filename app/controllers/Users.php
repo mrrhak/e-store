@@ -1,8 +1,16 @@
 <?php
 class Users extends Controller{
+  private $authUser;
   public function __construct(){
     parent::__construct();
     $this->userModel = $this->model('User');
+
+    if ($userId = $this->session->get('user_id')) {
+        $this->authUser = $this->userModel->findUserById($userId);
+        if($this->authUser == null){
+          $this->logout();
+        }
+    }
   }
 
   public function ajaxDetail($id)
@@ -251,6 +259,10 @@ class Users extends Controller{
   }
 
   public function register(){
+    if ($this->session->get('user_id')) {
+      header('location: ' . URLROOT);
+    }
+
     $data = [
       'title' => 'Register',
       'username' => '',
@@ -346,6 +358,10 @@ class Users extends Controller{
   }
 
   public function login(){
+    if ($this->session->get('user_id')) {
+      header('location: ' . URLROOT);
+    }
+
     $data = [
       'title' => 'Login',
       'username' => '',
@@ -400,6 +416,19 @@ class Users extends Controller{
     }
 
     $this->view('frontend/users/login', $data);
+  }
+
+  public function profile(){
+    if (!$this->session->get('user_id')) {
+      header('location: ' . URLROOT.'/users/login');
+    }
+
+    $data = [
+        'title' => 'Profile',
+        'page' => 'profile',
+        'user' => $this->authUser,
+      ];
+   $this->view('frontend/users/profile', $data);
   }
 
   public function createUserSession($user){

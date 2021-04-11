@@ -1,32 +1,26 @@
-<?php
-  /*
-  * Login
-  */
-
-  // Start Header
-  require_once APPROOT.'/views/layouts/header.php';
-  // End Header
-?>
-<!-- Begin page content -->
-  <div class="container">
-    <div class="m-5">
-      <h2>Sign In</h2>
-        <form action="<?= URLROOT ?>/users/login" method="post">
-          <input type="text" placeholder="Username" name="username" required>
-          <span>
-            <?= $data['usernameError'] ?>
-          </span>
-          <input type="password" placeholder="Password" name="password" required>
-          <span>
-            <?= $data['passwordError'] ?>
-          </span>
-          <button type="submit" id="submit" value="submit">Login</button>
-          <p>Not registered yet? <a href="<?= URLROOT ?>/users/register">Create an account!</a></p>
-        </form>
-    </div>
-  </div>
- 
-
-<!-- Start Footer -->
-<?php require_once APPROOT.'/views/layouts/footer.php'; ?>
-<!-- End Footer -->
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="UTF-8">
+      <title>Login</title>
+      <link rel="Stylesheet"  href="<?= URLROOT ?>/public/css/styleRegester.css">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+  </head>
+  <body>
+    <div class="center" >   
+      <div class= "header">Login</div>
+      <form action="<?= URLROOT ?>/users/login" method="post">
+        <input type="text" placeholder="Username" name="username" required>
+        <span style="color: red;">
+          <?= $data['usernameError'] ?>
+        </span>
+        <input type="password" placeholder="Password" name="password" required>
+        <span style="color: red;">
+          <?= $data['passwordError'] ?>
+        </span>
+        <input type ="submit" value="login"> 
+        <p> Not yet Register  <a href="<?= URLROOT ?>/users/register">Register</a></p>
+      </form>
+    </div> 
+  </body>      
+</html>
