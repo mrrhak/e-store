@@ -19,42 +19,44 @@
         style="overflow-x:scroll; display: block; overflow-x: auto; white-space: nowrap">
         <?php
         $menu = array("Clothes", "Eletronic", "Toys", "Machince" ,"Clothes", "Eletronic", "Toys", "Machince" , "Clothes", "Eletronic", "Toys", "Machince");
-           foreach ($menu as $key => $value) : ?>
+           foreach ($data["categories"] as $key => $value) : ?>
         <button class="btn-menu px-4 py-2 bg-red mx-2">
             <?php
-               echo $value
+               echo $value->category_name
             ?>
         </button>
         <?php
-            endforeach
+            endforeach;
          ?>
     </div>
-    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
+
             <div class="carousel-item active">
-                <img class="d-block w-100"
-                    src="https://ae01.alicdn.com/kf/H047ca541cfb1434abc11f14c40e82ebck.jpg_Q90.jpg_.webp">
+                <img class="d-block w-100" src="public/img/<?php echo $data["banners"][0]->image ?>">
             </div>
+            <?php
+                 foreach ($data["banners"] as $key => $value) :
+              ?>
+            <?php if($key > 0 && $value->category_name === "Fashions"): ?>
             <div class="carousel-item">
-                <img src="https://ae01.alicdn.com/kf/H81c0e86bf41247f99abee482aa870605A.png_.webp" class="d-block w-100"
-                    alt="...">
+                <img class="d-block w-100" src="public/img/<?php echo $value->image  ?>">
             </div>
-            <div class="carousel-item">
-                <img src="https://ae01.alicdn.com/kf/H047ca541cfb1434abc11f14c40e82ebck.jpg_Q90.jpg_.webp"
-                    class="d-block w-100" alt="...">
-            </div>
+            <?php  endif ;?>
+            <?php
+               endforeach ;
+            ?>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
-            data-bs-slide="prev">
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
-            data-bs-slide="next">
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
+            <span class="sr-only">Next</span>
+        </a>
     </div>
+
     <div class="w-100 d-block ">
         <?php
          for ($i=0; $i < 3; $i++) :
@@ -141,3 +143,19 @@
 <!-- Start Footer -->
 <?php require_once APPROOT.'/views/layouts/footer.php'; ?>
 <!-- End Footer -->
+
+
+<script>
+let test = "<?php $data["banners"]?>"
+
+console.log("test", <?php
+ echo $data["banners"][0]->image
+?>)
+const groupBy = (key, arr) => arr.reduce((cache, products) => ({
+    ...cache,
+    [products[key]]: products[key] in cache ?
+        cache[products[key]].concat(products) : [products]
+}), {})
+
+//console.log("banners:::", groupBy("color", ))
+</script>
