@@ -28,22 +28,40 @@ require_once '../app/helpers/Session.php';
                     <i class="fa fa-shopping-cart">
                         <span class="bage"> 0</spa>
                     </i>
-                    Shoping Cart
+                    Cart
                 </button>
 
                 <?php if(!isset($user)) : ?>
-                <a class="btn" href="<?= URLROOT ?>/users/register">
-                    <i class="fa fa-user" style="margin-right:8px"></i>
-                    Login Or Create
-                </a>
+                  <span>
+                    <a class="btn" href="<?= URLROOT ?>/users/login">
+                        <i class="fa fa-user" style="margin-right:8px"></i>
+                        Login
+                    </a>
+                  </span>
+                  <span>
+                    <a class="btn" href="<?= URLROOT ?>/users/register">
+                        <i class="fa fa-user-plus" style="margin-right:8px"></i>
+                        Register
+                    </a>
+                  </span>
+                
                 <?php else : ?>
-                <a class="btn" href="<?= URLROOT ?>/dashboard">
-                    <i class="fa fa-user" style="margin-right:8px"></i>
-                    My Account
-                </a>
-                <a class="btn" href="<?= URLROOT ?>/users/register">
-                <i class="fas fa-sign-out-alt" style="font-size:20px"></i>
-                </a>
+
+                  <?php if(strcmp($user->role, 'admin') == 0) : ?>
+                    <a class="btn" href="<?= URLROOT ?>/dashboard">
+                      <i class="fa fa-user" style="margin-right:8px"></i>
+                      Dashboard
+                    </a>
+                  <?php else : ?>
+                    <a class="btn" href="<?= URLROOT ?>/users/profile">
+                      <i class="fa fa-user" style="margin-right:8px"></i>
+                      My Account
+                    </a>
+                  <?php endif ?>
+
+                  <a class="btn" href="<?= URLROOT ?>/users/logout">
+                  <i class="fas fa-sign-out-alt" style="font-size:20px"></i>
+                  </a>
                 <?php endif ?>
 
 

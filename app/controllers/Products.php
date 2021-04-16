@@ -1,6 +1,7 @@
 <?php
    class Products extends Controller{
        private ?User $user = null;
+       private $authUser;
 
        public function __construct()
        {
@@ -11,15 +12,24 @@
            if ($userId = $this->session->get('user_id')) {
             $this->user = $this->model('User');
             $result =  $this->user->findUserById($userId);
-            $this->user->username = $result->username;
-            $this->user->email = $result->email;
-            $this->user->role = $result->role;
-            if($this->user->role != 'admin'){
+            $this->authUser = $result;
+            if($this->authUser->role != 'admin'){
                 header('location: ' . URLROOT);
             }
             } else {
                 header('location: ' . URLROOT.'/auth/login');
             }
+       }
+
+       public function details($id){
+           $product = $this->productModel->findProductById($id);
+           $data = [
+            'title' => 'Product Detail', // For make title
+            "page" => "product detail", // For make menu active link
+            'user' => $this->authUser ?? null, // User auth for use admin dashboard
+            "product" => $product,
+        ];
+        return $this->view('frontend/product-detail' , $data) ;
        }
        
        //product page index
@@ -30,7 +40,7 @@
         $data = [
             'title' => 'Products/Create', // For make title
             "page" => "products/create", // For make menu active link
-            'user' => $this->user ?? null, // User auth for use admin dashboard
+            'user' => $this->authUser ?? null, // User auth for use admin dashboard
             "products" => $products,
             "categories" =>$categories,
         ];
