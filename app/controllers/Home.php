@@ -5,6 +5,7 @@
     public function __construct(){
       parent::__construct(); // For init session
       $this->user = $this->model('User');
+      $this->productMpdel = $this->model("Product");
       $this->bannerModel = $this->model("Banner");
       $this->categoryModel = $this->model("Category");
       if ($userId = $this->session->get('user_id')) {
@@ -19,13 +20,15 @@
     public function index(){
       $users = $this->user->getUsers();
       $banners = $this->bannerModel->getAllBanners();
+      $products = $this->productMpdel->getAllProduct();
       $categories = $this->categoryModel->getAllCategory();
       $data = [
         'title' => 'Home',
         'page' => 'home', // For make menu active link
         'user' => $this->user->username != '' ? $this->user : null,
         'banners' => $banners,
-        'categories' => $categories
+        'categories' => $categories , 
+        "products" => $products
       ];
       $this->view('frontend/index', $data);
     }
