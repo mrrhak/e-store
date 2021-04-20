@@ -19,11 +19,14 @@
         style="overflow-x:scroll; display: block; overflow-x: auto; white-space: nowrap">
         <?php
            foreach ($data["categories"] as $key => $value) : ?>
-        <button class="btn-menu px-4 py-2 bg-red mx-2">
+
+        <a href="<?php
+           echo URLROOT."/product/category/".$value->cate_id
+        ?>" class="btn-menu px-4 py-2 bg-red mx-2 text-decoration-none">
             <?php
                echo $value->category_name
             ?>
-        </button>
+        </a>
         <?php
             endforeach;
          ?>
@@ -37,7 +40,7 @@
             <?php
                  foreach ($data["banners"] as $key => $value) :
               ?>
-            <?php if($key > 0 && $value->category_name === "Fashions"): ?>
+            <?php if( $value->category_name === "Fashions"): ?>
             <div class="carousel-item">
                 <img class="d-block w-100" src="public/img/<?php echo $value->image  ?>">
             </div>
@@ -63,36 +66,16 @@
               foreach ($data["products"] as $key => $value) :
             ?>
 
-            <div class="col-12 col-sm-8 col-md-6 col-lg-3 my-3">
-                <div class="card">
-                    <img class="card-img" src="public/img/<?=$value->image ?>" alt="Vans"
-                        style="height:200px; object-fit: cover">
-                    <div class="card-body">
-                        <h6 class="card-title"><?php
-                           echo $value->name
-                        ?></h6>
-                        <h6 class="mb-2 text-muted"><?php
-                         echo $value->category_name
-                        ?></h6>
-                        <span class="card-text">
-                            <?php
-                            echo $value->description
-                        ?>
-                        </span>
-                        <div class="buy d-flex justify-content-between align-items-center">
-                            <div class="price text-success">
-                                <h5 class="mt-4 text-danger">$<?php
-                                   echo $value->price
-                                ?></h5>
-                            </div>
-                            <a href="<?php
-                               echo URLROOT."/product/".$value->id
-                            ?>" class="btn btn-danger mt-3"><i class="fas fa-eye me-1"></i> View</a>
-                        </div>
+            <div class="col-12 col-sm-8 col-md-3 col-lg-2 my-3 p-0 m-0 rounded-md px-2">
+                <a class="text-decoration-none" href="<?php echo URLROOT."/product/".$value->id?>">
+                    <img class=" card-img" src="public/img/<?=$value->image ?>" alt="Vans"
+                        style="height:150px; object-fit: cover">
+                    <div class="card-body py-2 m-0  px-1 p-0" style="line-height:1px">
+                        <h6 class="text-danger">$ <?php echo $value->price ?></h6>
+                        <p class="text-secondary" style="font-size:14px"><?php echo $value->category_name ?></p>
                     </div>
-                </div>
+                </a>
             </div>
-
             <?php
                endforeach
             ?>
