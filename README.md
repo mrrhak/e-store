@@ -84,6 +84,11 @@ Password: 12345678
 Email: admin@e-store.com
 ```
 
+## Live Preview
+  ```
+  http://mrrhak.com/e-store/
+  ```
+
 ## Scope of projects
 
 ### Frontend Feature
