@@ -25,11 +25,12 @@
       $data = [
         'title' => 'Home',
         'page' => 'home', // For make menu active link
-        'user' => $this->user->username != '' ? $this->user : null,
+        'user' => $this->authUser->username != '' ? $this->authUser : null,
         'banners' => $banners,
         'categories' => $categories , 
         "products" => $products
       ];
+          
       $this->view('frontend/index', $data);
     }
   }
