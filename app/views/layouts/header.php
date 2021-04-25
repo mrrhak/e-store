@@ -1,6 +1,5 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -16,13 +15,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="<?= URLROOT ?>/public/css/product-details.css">
     <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">-->
     <link rel="stylesheet" href="<?= URLROOT ?>/public/css/main.css">
 
 
     <title><?= SITENAME ?? ''.' | '.$data['title'] ?? '' ?></title>
+    
 </head>
 
 <body class="d-flex flex-column min-vh-100">
-    <?php require_once 'navbar.php' ?>
+<?php require_once 'navbar.php' ?>
