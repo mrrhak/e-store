@@ -10,14 +10,14 @@
            $this->categoryModel= $this->model("Category");
 
            if ($userId = $this->session->get('user_id')) {
-            $this->user = $this->model('User');
-            $result =  $this->user->findUserById($userId);
-            $this->authUser = $result;
-            if($this->authUser->role != 'admin'){
-                header('location: ' . URLROOT);
-            }
+                $this->user = $this->model('User');
+                $result =  $this->user->findUserById($userId);
+                $this->authUser = $result;
+                // if($this->authUser->role != 'admin'){
+                //     header('location: ' . URLROOT);
+                // }
             } else {
-                header('location: ' . URLROOT.'/auth/login');
+                // header('location: ' . URLROOT.'/auth/login');
             }
        }
 
@@ -35,16 +35,25 @@
        //product page index
        public  function index()
        {
-        $products =  $this->productModel->getAllProduct();
-        $categories = $this->categoryModel->getAllCategory() ;
-        $data = [
-            'title' => 'Products/Create', // For make title
-            "page" => "products/create", // For make menu active link
-            'user' => $this->authUser ?? null, // User auth for use admin dashboard
-            "products" => $products,
-            "categories" =>$categories,
-        ];
-        return $this->view('backend/products/index' , $data) ;
+           if($this->authUser != null){
+                if($this->authUser->role != 'admin'){
+                    header('location: ' . URLROOT);
+                }
+            }
+            else{
+                header('location: ' . URLROOT.'/auth/login');
+            }
+
+            $products =  $this->productModel->getAllProduct();
+            $categories = $this->categoryModel->getAllCategory() ;
+            $data = [
+                'title' => 'Products/Create', // For make title
+                "page" => "products/create", // For make menu active link
+                'user' => $this->authUser ?? null, // User auth for use admin dashboard
+                "products" => $products,
+                "categories" =>$categories,
+            ];
+            return $this->view('backend/products/index' , $data) ;
        }
 
        // create function product detail 
