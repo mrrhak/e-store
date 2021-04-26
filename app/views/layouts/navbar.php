@@ -19,9 +19,10 @@ require_once '../app/helpers/Session.php';
                 </li>
 
             </ul>
-            <form class="me-auto search-header">
+            <form class="me-auto search-header" action="" method="POST">
                 <input class="form-control me-2 input" type="search" placeholder="Search item" aria-label="Search">
-                <button class="btn" type="submit">Search</button>
+                <!--<button class="btn" class="form-control"  type="submit"></button>-->
+                <input class="btn" value="search" type="submit">
             </form>
             <ul class="mb-2 mb-lg-0" style="display: flex">
                 <button class="btn">
@@ -32,36 +33,36 @@ require_once '../app/helpers/Session.php';
                 </button>
 
                 <?php if(!isset($user)) : ?>
-                  <span>
+                <span>
                     <a class="btn" href="<?= URLROOT ?>/users/login">
                         <i class="fa fa-user" style="margin-right:8px"></i>
                         Login
                     </a>
-                  </span>
-                  <span>
+                </span>
+                <span>
                     <a class="btn" href="<?= URLROOT ?>/users/register">
                         <i class="fa fa-user-plus" style="margin-right:8px"></i>
                         Register
                     </a>
-                  </span>
-                
+                </span>
+
                 <?php else : ?>
 
-                  <?php if(strcmp($user->role, 'admin') == 0) : ?>
-                    <a class="btn" href="<?= URLROOT ?>/dashboard">
-                      <i class="fa fa-user" style="margin-right:8px"></i>
-                      Dashboard
-                    </a>
-                  <?php else : ?>
-                    <a class="btn" href="<?= URLROOT ?>/users/profile">
-                      <i class="fa fa-user" style="margin-right:8px"></i>
-                      My Account
-                    </a>
-                  <?php endif ?>
+                <?php if(strcmp($user->role, 'admin') == 0) : ?>
+                <a class="btn" href="<?= URLROOT ?>/dashboard">
+                    <i class="fa fa-user" style="margin-right:8px"></i>
+                    Dashboard
+                </a>
+                <?php else : ?>
+                <a class="btn" href="<?= URLROOT ?>/users/profile">
+                    <i class="fa fa-user" style="margin-right:8px"></i>
+                    My Account
+                </a>
+                <?php endif ?>
 
-                  <a class="btn" href="<?= URLROOT ?>/users/logout">
-                  <i class="fas fa-sign-out-alt" style="font-size:20px"></i>
-                  </a>
+                <a class="btn" href="<?= URLROOT ?>/users/logout">
+                    <i class="fas fa-sign-out-alt" style="font-size:20px"></i>
+                </a>
                 <?php endif ?>
 
 

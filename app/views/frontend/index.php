@@ -34,14 +34,18 @@
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner mt-5">
 
-            <div class="carousel-item active">
+            <!--<div class="carousel-item active">
                 <img class="d-block w-100" src="public/img/<?php echo $data["banners"][0]->image ?>">
-            </div>
+            </div>-->
             <?php
                  foreach ($data["banners"] as $key => $value) :
               ?>
             <?php if( $value->category_name === "Fashions"): ?>
-            <div class="carousel-item">
+            <div class="carousel-item<?php
+             if($key===0) :
+            ?> active <?php
+                endif
+            ?>">
                 <img class="d-block w-100" src="public/img/<?php echo $value->image  ?>">
             </div>
             <?php  endif ;?>
@@ -60,7 +64,7 @@
     </div>
 
     <div class="container">
-        <h3 class="justify-content-center py-5 d-flex align-items-start">TOP SELLING PRODUCTS</h3>
+        <h3 class="justify-content-center py-5 d-flex align-items-start">PRODUCTS FEATURE</h3>
         <div class="row d-flex flex-wrap">
             <?php
               foreach ($data["products"] as $key => $value) :
@@ -73,6 +77,27 @@
                     <div class="card-body py-2 m-0  px-1 p-0" style="line-height:1px">
                         <h6 class="text-danger">$ <?php echo $value->price ?></h6>
                         <p class="text-secondary" style="font-size:14px"><?php echo $value->category_name ?></p>
+                    </div>
+                </a>
+            </div>
+            <?php
+               endforeach
+            ?>
+        </div>
+    </div>
+    <div class="container">
+        <h3 class="justify-content-center py-5 d-flex align-items-start">PARTNER</h3>
+        <div class="row d-flex flex-wrap">
+            <?php
+              foreach ($data["banners"] as $key => $value) :
+            ?>
+
+            <div class="col-12 col-sm-8 col-md-3 col-lg-1 my-3 p-0 m-0 rounded-md px-2">
+                <a class="text-decoration-none" href="<?php echo URLROOT."/product/".$value->id?>">
+                    <img class=" card-img m-auto" src="public/img/<?=$value->image ?>" alt="Vans"
+                        style="height:100px; width:100px; border-radius:100% ; object-fit: cover">
+                    <div class="card-body text-center py-2 m-0  px-1 p-0" style="line-height:1px">
+                        <p class="text-secondary mt-1" style="font-size:14px"><?php echo $value->title ?></p>
                     </div>
                 </a>
             </div>
