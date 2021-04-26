@@ -18,7 +18,7 @@
     }
 
     public function index(){
-      $users = $this->user->getUsers();
+      //$users = $this->user->getUsers();
       $banners = $this->bannerModel->getAllBanners();
       $products = $this->productMpdel->getAllProduct();
       $categories = $this->categoryModel->getAllCategory();
