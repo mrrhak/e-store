@@ -25,7 +25,7 @@
       $data = [
         'title' => 'Home',
         'page' => 'home', // For make menu active link
-        'user' => $this->authUser->username != '' ? $this->authUser : null,
+        'user' => $this->authUser != null ? $this->authUser : null,
         'banners' => $banners,
         'categories' => $categories , 
         "products" => $products
