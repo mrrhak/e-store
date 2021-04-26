@@ -71,7 +71,7 @@
             ?>
 
             <div class="col-12 col-sm-8 col-md-3 col-lg-2 my-3 p-0 m-0 rounded-md px-2">
-                <a class="text-decoration-none" href="<?php echo URLROOT."/product/".$value->id?>">
+                <a class="text-decoration-none" href="<?php echo URLROOT."/products/details/".$value->id?>">
                     <img class=" card-img" src="public/img/<?=$value->image ?>" alt="Vans"
                         style="height:150px; object-fit: cover">
                     <div class="card-body py-2 m-0  px-1 p-0" style="line-height:1px">

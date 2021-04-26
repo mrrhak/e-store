@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 11, 2021 at 06:31 PM
+-- Generation Time: Apr 25, 2021 at 05:26 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.8
 
@@ -20,6 +20,29 @@ SET time_zone = "+00:00";
 --
 -- Database: `estore_db`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `banners`
+--
+
+CREATE TABLE `banners` (
+  `banner_id` int(11) NOT NULL,
+  `title` varchar(300) NOT NULL,
+  `image` varchar(1000) NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `banners`
+--
+
+INSERT INTO `banners` (`banner_id`, `title`, `image`, `category_id`, `created_at`, `user_id`) VALUES
+(2, 'Tesla Banner 202', 'lambo.jpeg', 7, '2021-04-10 15:57:33', 11),
+(3, 'Khmer Car 2020', 'tesla.jpeg', 10, '2021-04-10 13:57:05', 11);
 
 -- --------------------------------------------------------
 
