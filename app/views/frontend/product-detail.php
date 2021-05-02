@@ -43,7 +43,97 @@
       </div>
      <?php endif; ?>
   </section>
-
+<section class="section related-products">
+            <div class="title">
+              <h2>Recommented for You</h2>
+            </div>
+            <div class="product-layout container">
+                <div class="product">
+                  <div class="img-container">
+                    <img src="https://www.ice-watch.com/sites/default/files/styles/watch_slide/public/montres/018946_01.png?itok=odzz4JG5" alt="" />
+                    <div class="addCart">
+                      <i class="fas fa-shopping-cart"></i>
+                    </div>
+          
+                    <ul class="side-icons">
+                      <span><i class="fas fa-search"></i></span>
+                      <span><i class="far fa-heart"></i></span>
+                      <span><i class="fas fa-sliders-h"></i></span>
+                    </ul>
+                  </div>
+                  <div class="bottom">
+                    <a href="">Watch</a>
+                    <div class="product-price">
+                      <p class = "last-price">Old Price: <span>$400</span></p>
+                      <p class = "new-price">New Price: <span>$360(10%)</span></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="product">
+                    <div class="img-container">
+                      <img src="https://static.zajo.net/content/mediagallery/zajo_dcat/image/product/types/X/9088.png" alt="" />
+                      <div class="addCart">
+                        <i class="fas fa-shopping-cart"></i>
+                      </div>
+            
+                      <ul class="side-icons">
+                        <span><i class="fas fa-search"></i></span>
+                        <span><i class="far fa-heart"></i></span>
+                        <span><i class="fas fa-sliders-h"></i></span>
+                      </ul>
+                    </div>
+                    <div class="bottom">
+                      <a href="">T-shirt</a>
+                      <div class="product-price">
+                        <p class = "last-price">Old Price: <span>$150</span></p>
+                        <p class = "new-price">New Price: <span>$120 (20%)</span></p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="product">
+                    <div class="img-container">
+                      <img src="https://images-na.ssl-images-amazon.com/images/I/71D9ImsvEtL._AC_UL1500_.jpg" alt="" />
+                      <div class="addCart">
+                        <i class="fas fa-shopping-cart"></i>
+                      </div>
+            
+                      <ul class="side-icons">
+                        <span><i class="fas fa-search"></i></span>
+                        <span><i class="far fa-heart"></i></span>
+                        <span><i class="fas fa-sliders-h"></i></span>
+                      </ul>
+                    </div>
+                    <div class="bottom">
+                      <a href="">Shoes</a>
+                      <div class="product-price">
+                        <p class = "last-price">Old Price: <span>$350</span></p>
+                        <p class = "new-price">New Price: <span>$280 (20%)</span></p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="product">
+                    <div class="img-container">
+                      <img src="http://cdn.shopify.com/s/files/1/0406/6174/5832/products/WDBK1547_BambiTattooAOPMini_3Q_1200x1200.jpg?v=1611625529" alt="" />
+                      <div class="addCart">
+                        <i class="fas fa-shopping-cart"></i>
+                      </div>
+            
+                      <ul class="side-icons">
+                        <span><i class="fas fa-search"></i></span>
+                        <span><i class="far fa-heart"></i></span>
+                        <span><i class="fas fa-sliders-h"></i></span>
+                      </ul>
+                    </div>
+                    <div class="bottom">
+                      <a href="">Bambi Print Mini Backpack</a>
+                      <div class="product-price">
+                        <p class = "last-price">Old Price: <span>$200</span></p>
+                        <p class = "new-price">New Price: <span>$140 (30%)</span></p>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 <!-- Start Footer -->
 <?php require_once APPROOT.'/views/layouts/footer.php'; ?>
 <!-- End Footer -->
