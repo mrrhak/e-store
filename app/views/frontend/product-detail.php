@@ -43,97 +43,80 @@
       </div>
      <?php endif; ?>
   </section>
-<section class="section related-products">
-            <div class="title">
-              <h2>Recommented for You</h2>
+   <!--Recommented For You-------------------------------->
+   <section class="new-arrival">
+            
+            <!--heading-------->
+            <div class="arrival-heading">
+                <strong>Recommented For You</strong>
             </div>
-            <div class="product-layout container">
-                <div class="product">
-                  <div class="img-container">
-                    <img src="https://www.ice-watch.com/sites/default/files/styles/watch_slide/public/montres/018946_01.png?itok=odzz4JG5" alt="" />
-                    <div class="addCart">
-                      <i class="fas fa-shopping-cart"></i>
-                    </div>
-          
-                    <ul class="side-icons">
-                      <span><i class="fas fa-search"></i></span>
-                      <span><i class="far fa-heart"></i></span>
-                      <span><i class="fas fa-sliders-h"></i></span>
-                    </ul>
+              <!--products----------------------->
+              <div class="product-container">
+                  
+                <!--product-box-1---------->
+                  <div class="product-box">
+                      <!--product-img------------>
+                      <div class="product-img">
+                          <!--add-cart---->
+                          <a href="#" class="add-cart">
+                              <i class="fas fa-shopping-cart"></i>
+                            </a>
+                          <!--img------>
+                        <img src="https://lh3.googleusercontent.com/proxy/JcA9zxEK5ApCDy40-iQfKUl8JrFjhZlPaE128LrV-qm4RSzmkTc4ZuwRv0jkz5SzVPiMjGXBECZDfjKtq7SYVgg3ugn5C2VCBQvFwQRRIeMR8WRKYev2bJscqbk">
+                      </div>
+                      <!--product-details-------->
+                      <div class="product-details">
+                          <a href="#" class="p-name">TOYOTA</a>
+                          <span class="p-price">$52000.00</span>
+                      </div>
                   </div>
-                  <div class="bottom">
-                    <a href="">Watch</a>
-                    <div class="product-price">
-                      <p class = "last-price">Old Price: <span>$400</span></p>
-                      <p class = "new-price">New Price: <span>$360(10%)</span></p>
+                    <!--product-box-2---------->
+                    <div class="product-box">
+                        <!--product-img------------>
+                        <div class="product-img">
+                            <!--add-cart---->
+                          <a href="#" class="add-cart"><i class="fas fa-shopping-cart"></i></a>
+                          <!--img------>
+                          <img src="https://img.sm360.ca/ir/w640h333c/images/newcar/ca/2021/land-rover/range-rover-phev/hse/suv/exteriorColors/12725_cc0640_032_1aa.png">
+                        </div>
+                        <!--product-details-------->
+                        <div class="product-details">
+                            <a href="#" class="p-name">RANGE ROVER</a>
+                            <span class="p-price">$220000.00</span>
+                        </div>
                     </div>
-                  </div>
-                </div>
-                <div class="product">
-                    <div class="img-container">
-                      <img src="https://static.zajo.net/content/mediagallery/zajo_dcat/image/product/types/X/9088.png" alt="" />
-                      <div class="addCart">
-                        <i class="fas fa-shopping-cart"></i>
-                      </div>
-            
-                      <ul class="side-icons">
-                        <span><i class="fas fa-search"></i></span>
-                        <span><i class="far fa-heart"></i></span>
-                        <span><i class="fas fa-sliders-h"></i></span>
-                      </ul>
+                  <!--product-box-3---------->
+                  <div class="product-box">
+                    <!--product-img------------>
+                    <div class="product-img">
+                        <!--add-cart---->
+                        <a href="#" class="add-cart"><i class="fas fa-shopping-cart"></i></a>
+                        <!--img------>
+                      <img src="https://s.aolcdn.com/commerce/autodata/images/USC90BMC681A021001.jpg">
                     </div>
-                    <div class="bottom">
-                      <a href="">T-shirt</a>
-                      <div class="product-price">
-                        <p class = "last-price">Old Price: <span>$150</span></p>
-                        <p class = "new-price">New Price: <span>$120 (20%)</span></p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="product">
-                    <div class="img-container">
-                      <img src="https://images-na.ssl-images-amazon.com/images/I/71D9ImsvEtL._AC_UL1500_.jpg" alt="" />
-                      <div class="addCart">
-                        <i class="fas fa-shopping-cart"></i>
-                      </div>
-            
-                      <ul class="side-icons">
-                        <span><i class="fas fa-search"></i></span>
-                        <span><i class="far fa-heart"></i></span>
-                        <span><i class="fas fa-sliders-h"></i></span>
-                      </ul>
-                    </div>
-                    <div class="bottom">
-                      <a href="">Shoes</a>
-                      <div class="product-price">
-                        <p class = "last-price">Old Price: <span>$350</span></p>
-                        <p class = "new-price">New Price: <span>$280 (20%)</span></p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="product">
-                    <div class="img-container">
-                      <img src="http://cdn.shopify.com/s/files/1/0406/6174/5832/products/WDBK1547_BambiTattooAOPMini_3Q_1200x1200.jpg?v=1611625529" alt="" />
-                      <div class="addCart">
-                        <i class="fas fa-shopping-cart"></i>
-                      </div>
-            
-                      <ul class="side-icons">
-                        <span><i class="fas fa-search"></i></span>
-                        <span><i class="far fa-heart"></i></span>
-                        <span><i class="fas fa-sliders-h"></i></span>
-                      </ul>
-                    </div>
-                    <div class="bottom">
-                      <a href="">Bambi Print Mini Backpack</a>
-                      <div class="product-price">
-                        <p class = "last-price">Old Price: <span>$200</span></p>
-                        <p class = "new-price">New Price: <span>$140 (30%)</span></p>
-                      </div>
+                    <!--product-details-------->
+                    <div class="product-details">
+                        <a href="#" class="p-name">BMW</a>
+                        <span class="p-price">$500000.00</span>
                     </div>
                 </div>
-            </div>
-        </section>
+                  <!--product-box-4---------->
+                  <div class="product-box">
+                    <!--product-img------------>
+                    <div class="product-img">
+                        <!--add-cart---->
+                        <a href="#" class="add-cart"><i class="fas fa-shopping-cart"></i></a>
+                        <!--img------>
+                      <img src="https://cdn.hum3d.com/wp-content/uploads/Lamborghini/041_Lamborghini_Urus_2019/Lamborghini_Urus_2019_600_0001.jpg">
+                    </div>
+                    <!--product-details-------->
+                    <div class="product-details">
+                        <a href="#" class="p-name">LAMBORGHINI</a>
+                        <span class="p-price">$600000.00</span>
+                    </div>
+                </div>
+              </div>
+          </section>
 <!-- Start Footer -->
 <?php require_once APPROOT.'/views/layouts/footer.php'; ?>
 <!-- End Footer -->
