@@ -21,7 +21,7 @@
            foreach ($data["categories"] as $key => $value) : ?>
 
         <a href="<?php
-           echo URLROOT."/product/category/".$value->cate_id
+           echo URLROOT."/products/category/".$value->cate_id
         ?>" class="btn-menu px-4 py-2 bg-red mx-2 text-decoration-none">
             <?php
                echo $value->category_name
@@ -31,26 +31,26 @@
             endforeach;
          ?>
     </div>
-    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <!-- <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner mt-5">
 
-            <!--<div class="carousel-item active">
-                <img class="d-block w-100" src="public/img/<?php echo $data["banners"][0]->image ?>">
-            </div>-->
-            <?php
-                 foreach ($data["banners"] as $key => $value) :
-              ?>
-            <?php if( $value->category_name === "Fashions"): ?>
-            <div class="carousel-item<?php
-             if($key===0) :
-            ?> active <?php
-                endif
-            ?>">
-                <img class="d-block w-100" src="public/img/<?php echo $value->image  ?>">
+            <div class="carousel-item active">
+                <img class="d-block w-100" src="public/img/<?php //echo $data["banners"][0]->image ?>">
             </div>
-            <?php  endif ;?>
             <?php
-               endforeach ;
+                 //foreach ($data["banners"] as $key => $value) :
+              ?>
+            <?php //if( $value->category_name === "Fashions"): ?>
+            <div class="carousel-item<?php
+             //if($key===0) :
+            ?> active <?php
+                //endif
+            ?>">
+                <img class="d-block w-100" src="public/img/<?php //echo $value->image  ?>">
+            </div>
+            <?php  //endif ;?>
+            <?php
+               //endforeach ;
             ?>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -61,7 +61,7 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>
-    </div>
+    </div> -->
 
     <!--  -->
 
