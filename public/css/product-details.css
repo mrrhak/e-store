@@ -443,11 +443,22 @@
   box-shadow: 2px 2px 30px rgba(0,0,0,0.1);
   display: none;
   animation: fade 0.3s;
-
 }
 .add-cart:hover{
   background-color: #f76b6a;
   transition: all ease 0.2s;
+}
+
+/* a:hover {
+  z-index: 1;
+  width: 200px;
+  border-bottom: 1px solid rgba(0, 0, 0, .5);
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, .3);
+} */
+
+ul li:hover a span {
+  padding-left: 30%;
+  display: block;
 }
 .product-box:hover .add-cart{
   display: flex;
