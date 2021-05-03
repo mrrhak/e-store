@@ -50,71 +50,36 @@
             <div class="arrival-heading">
                 <strong>Recommented For You</strong>
             </div>
+            
               <!--products----------------------->
               <div class="product-container">
-                  
-                <!--product-box-1---------->
-                  <div class="product-box">
+              
+              <?php
+                  foreach ($data["recomments"] as $key => $value) :
+              ?>
+               <div class="product-box">
                       <!--product-img------------>
                       <div class="product-img">
                           <!--add-cart---->
-                          <a href="#" class="add-cart">
+                          <a class="text-decoration-none add-cart">
                               <i class="fas fa-shopping-cart"></i>
                             </a>
                           <!--img------>
-                        <img src="https://lh3.googleusercontent.com/proxy/JcA9zxEK5ApCDy40-iQfKUl8JrFjhZlPaE128LrV-qm4RSzmkTc4ZuwRv0jkz5SzVPiMjGXBECZDfjKtq7SYVgg3ugn5C2VCBQvFwQRRIeMR8WRKYev2bJscqbk">
+                          <a  href="<?php echo URLROOT."/products/details/".$value->id?>">
+                            <img src="<?= URLROOT.'/public/img/'.$value->image ?>">
+                          </a>
                       </div>
                       <!--product-details-------->
                       <div class="product-details">
-                          <a href="#" class="p-name">TOYOTA</a>
-                          <span class="p-price">$52000.00</span>
+                          <a href="#" class="p-name"><?php echo $value->name ?></a>
+                          <span class="p-price">$<?php echo $value->price ?></span>
                       </div>
                   </div>
-                    <!--product-box-2---------->
-                    <div class="product-box">
-                        <!--product-img------------>
-                        <div class="product-img">
-                            <!--add-cart---->
-                          <a href="#" class="add-cart"><i class="fas fa-shopping-cart"></i></a>
-                          <!--img------>
-                          <img src="https://img.sm360.ca/ir/w640h333c/images/newcar/ca/2021/land-rover/range-rover-phev/hse/suv/exteriorColors/12725_cc0640_032_1aa.png">
-                        </div>
-                        <!--product-details-------->
-                        <div class="product-details">
-                            <a href="#" class="p-name">RANGE ROVER</a>
-                            <span class="p-price">$220000.00</span>
-                        </div>
-                    </div>
-                  <!--product-box-3---------->
-                  <div class="product-box">
-                    <!--product-img------------>
-                    <div class="product-img">
-                        <!--add-cart---->
-                        <a href="#" class="add-cart"><i class="fas fa-shopping-cart"></i></a>
-                        <!--img------>
-                      <img src="https://s.aolcdn.com/commerce/autodata/images/USC90BMC681A021001.jpg">
-                    </div>
-                    <!--product-details-------->
-                    <div class="product-details">
-                        <a href="#" class="p-name">BMW</a>
-                        <span class="p-price">$500000.00</span>
-                    </div>
-                </div>
-                  <!--product-box-4---------->
-                  <div class="product-box">
-                    <!--product-img------------>
-                    <div class="product-img">
-                        <!--add-cart---->
-                        <a href="#" class="add-cart"><i class="fas fa-shopping-cart"></i></a>
-                        <!--img------>
-                      <img src="https://cdn.hum3d.com/wp-content/uploads/Lamborghini/041_Lamborghini_Urus_2019/Lamborghini_Urus_2019_600_0001.jpg">
-                    </div>
-                    <!--product-details-------->
-                    <div class="product-details">
-                        <a href="#" class="p-name">LAMBORGHINI</a>
-                        <span class="p-price">$600000.00</span>
-                    </div>
-                </div>
+              
+              
+              <?php
+                 endforeach
+              ?>
               </div>
           </section>
 <!-- Start Footer -->
