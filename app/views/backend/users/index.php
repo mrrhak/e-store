@@ -40,6 +40,24 @@ require_once APPROOT.'/views/backend/layouts/header.php';
                         </div>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            </div>
+                            <input name="phone" type="text" class="form-control" placeholder="Phone">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            </div>
+                            <input name="address1" type="text" class="form-control" placeholder="Address 1">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            </div>
+                            <input name="address2" type="text" class="form-control" placeholder="Address 2">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
                             <input name="password" type="password" class="form-control" placeholder="Password"

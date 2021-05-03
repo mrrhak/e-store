@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 25, 2021 at 05:26 PM
+-- Generation Time: May 03, 2021 at 04:42 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.8
 
@@ -54,7 +54,8 @@ CREATE TABLE `categories` (
   `cate_id` int(11) NOT NULL,
   `category_name` varchar(100) DEFAULT NULL,
   `status` tinyint(1) DEFAULT NULL,
-  `created_at` date DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -62,13 +63,14 @@ CREATE TABLE `categories` (
 -- Dumping data for table `categories`
 --
 
-INSERT INTO `categories` (`cate_id`, `category_name`, `status`, `created_at`, `user_id`) VALUES
-(4, 'Grocery', 1, '2021-03-29', 12),
-(6, 'Fashions', 1, NULL, 11),
-(7, 'Car  & Sales', 1, '2021-04-10', 11),
-(8, 'Part  &  Accessories', 1, '2021-04-10', 11),
-(9, 'Beauty & Healthcare', 1, NULL, 11),
-(10, 'Furniture & Decor', 1, NULL, 11);
+INSERT INTO `categories` (`cate_id`, `category_name`, `status`, `created_at`, `updated_at`, `user_id`) VALUES
+(4, 'Grocery', 1, '2021-05-03 14:27:03', NULL, 1),
+(6, 'Fashions', 1, '2021-05-03 14:27:13', NULL, 1),
+(7, 'Car  & Sales', 1, '2021-05-03 14:27:05', NULL, 1),
+(10, 'Furniture & Decor', 1, '2021-05-03 14:27:09', NULL, 1),
+(11, 'Hello', 1, '2021-05-03 14:27:12', NULL, 1),
+(16, 'car', 1, '2021-05-03 14:16:25', '2021-05-03 14:28:53', 1),
+(17, 'Motor', 1, '2021-05-03 14:26:50', '2021-05-03 14:30:34', 1);
 
 -- --------------------------------------------------------
 
@@ -108,15 +110,19 @@ CREATE TABLE `users` (
   `username` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `role` varchar(100) NOT NULL
+  `role` varchar(100) NOT NULL,
+  `phone` varchar(16) DEFAULT NULL,
+  `address1` varchar(255) DEFAULT NULL,
+  `address2` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `email`, `password`, `role`) VALUES
-(1, 'admin', 'admin@e-store.com', '$2y$10$ouL..l1dq9rPs.08PqCtZOkW.sQ4EvQNevv5oMSEgTdhiZC1nbJ0W', 'admin');
+INSERT INTO `users` (`id`, `username`, `email`, `password`, `role`, `phone`, `address1`, `address2`) VALUES
+(1, 'admin', 'admin@e-store.com', '$2y$10$ouL..l1dq9rPs.08PqCtZOkW.sQ4EvQNevv5oMSEgTdhiZC1nbJ0W', 'admin', NULL, NULL, NULL),
+(2, 'customer', 'customer@gmail.com', '$2y$10$m6YGXVVgu/wvNe3vk9luieBpFIWTqa2cecm6KsjCCPa9yLjAnTLSW', 'customer', NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -148,7 +154,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `cate_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `cate_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -160,7 +166,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
