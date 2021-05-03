@@ -14,11 +14,59 @@
 <!-- Begin page content -->
 <main class="flex-shrink-0">
   <div class="container">
+  <!-- modal edit user -->
+  <div class="modal fade" id="modalEditUser" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Update Info</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form id="user-edit-form" action="" method="post">
+          <div class="modal-body">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-phone"></i></span>
+              </div>
+              <input id="edit_phone" name="phone" type="text" class="form-control" placeholder="Phone (Optional)">
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-address-card"></i></span>
+              </div>
+              <input id="edit_address1" name="address1" type="text" class="form-control" placeholder="Address 1 (Optional)">
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-address-card"></i></span>
+              </div>
+              <input id="edit_address2" name="address2" type="text" class="form-control" placeholder="Address 2 (Optional)">
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-key"></i></span>
+              </div>
+              <input id="edit_password" name="password" type="password" class="form-control" placeholder="Leave password empty if not change" autocomplete="new-password">
+            </div>
+          </div>
+          <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+        </form>
+        
+      </div>
+    </div>
+  </div>
+      
+      <!-- end modal edit user -->
+
+      <!--  -->
     <div class="main-body">
     
-          <!-- Breadcrumb -->
-          <h2 class="text-center m-4" style="font-size: 40px;">User Account</h2>
-          <!-- /Breadcrumb -->
+      <!-- Breadcrumb -->
+      <h2 class="text-center m-4" style="font-size: 40px;">My Account</h2>
+      <!-- /Breadcrumb -->
     
           <div class="row gutters-sm">
             <div class="col-md-4 mb-3">
@@ -63,7 +111,7 @@
                       <h6 class="mb-0">Phone</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      (239) 816-9029
+                      <?= $user->phone ?>
                     </div>
                   </div>
                   <hr>
@@ -72,7 +120,7 @@
                       <h6 class="mb-0">Address 1</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      Phnom Penh
+                      <?= $user->address1 ?>
                     </div>
                   </div>
                   <hr>
@@ -81,11 +129,12 @@
                       <h6 class="mb-0">Address 2</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      Bay Area, San Francisco, CA
+                      <?= $user->address2 ?>
                     </div>
                   </div>
                 </div>
               </div>
+              <button type="button" class="btn btn-primary w-100" data-id="<?= $user->id ?>" data-bs-toggle="modal" data-bs-target="#modalEditUser">Update</button>
               <div class="row gutters-sm">
                 <div class="col-12">
                 <h3 class="text-center mt-4">Checkout History</h3>
@@ -113,3 +162,72 @@
 <!-- Start Footer -->
 <?php require_once APPROOT.'/views/layouts/footer.php'; ?>
 <!-- End Footer -->
+
+<script>
+$(function() {
+  var Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000
+    });
+
+  // Handle Button Edit
+    var userUpdateId;
+    $('#modalEditUser').on('show.bs.modal', function(event) {
+      var button = $(event.relatedTarget); // Button that triggered the modal
+      userUpdateId = button.data('id');
+      // Load data for edit
+      $.ajax({
+          type: 'GET',
+          url: '<?= URLROOT ?>/users/ajaxDetail/' + userUpdateId,
+          data: {},
+          contentType: false,
+          processData: false,
+          success: (response) => {
+              console.log(response);
+              $('#edit_phone').val(response.phone);
+              $('#edit_address1').val(response.address1);
+              $('#edit_address2').val(response.address2);
+          },
+          error: function(response) {
+              var errors = response.responseJSON.errors;
+              $.each(errors, function(key, value) {
+                  toastr.error(value);
+              });
+          }
+      });
+    });
+    $('#user-edit-form').submit(function(e) {
+        e.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: "<?= URLROOT ?>/users/ajaxFrontendUpdate/" + userUpdateId,
+            data: new FormData(this),
+            contentType: false,
+            processData: false,
+            success: (response) => {
+                // console.log(response);
+                Toast.fire({
+                    icon: 'success',
+                    title: 'User ' + response.username + ' updated successfully.'
+                });
+                $('#modal-edit-user').modal('hide');
+                refresh(1000);
+            },
+            error: function(response) {
+                var errors = response.responseJSON.errors;
+                $.each(errors, function(key, value) {
+                    toastr.error(value);
+                });
+            }
+        });
+    });
+
+    function refresh(time) {
+        setTimeout(function() {
+            location.reload()
+        }, time);
+    }
+  });
+</script>

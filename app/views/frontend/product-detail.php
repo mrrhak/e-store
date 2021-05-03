@@ -9,7 +9,7 @@
   // End Header
 ?>
 
-  <h1 class="text-center pt-4"><?= $title ?></h1>
+  <h1 class="text-center pt-4 mb-4 text-primary text-uppercase"><?= $title ?></h1>
   <section class="section product-detail">
     <?php if($product != null):?>
       <div class="details container">
@@ -35,7 +35,7 @@
             <a href="#" class = "buynow">Buy Now</a>
             <a href="#" class="addCart">Add To Cart<i class = "fas fa-shopping-cart"></i></a>
           </form>
-          <h3>Product Detail</h3>
+          <h3>Product Description</h3>
           <p>
             <?= $product->description ?>
           </p>
