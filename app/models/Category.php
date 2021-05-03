@@ -6,7 +6,7 @@ class Category
   }
 
   function getAllCategory() {
-    $this->db->query("SELECT category_name,cate_id,status,created_at,updated_at,username FROM categories JOIN users ON categories.user_id = users.id ORDER BY created_at ASC");
+    $this->db->query("SELECT category_name,cate_id,status,created_at,updated_at,username FROM categories JOIN users ON categories.user_id = users.id ORDER BY created_at DESC");
     $resault  =  $this->db->resultSet();
     return $resault;
   }
