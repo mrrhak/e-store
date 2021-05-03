@@ -119,9 +119,9 @@
 <script>
 let test = "<?php $data["banners"]?>"
 
-console.log("test", <?php
- echo $data["banners"][0]->image
-?>)
+// console.log("test", <?php
+//  echo $data["banners"][0]->image
+// ?>)
 const groupBy = (key, arr) => arr.reduce((cache, products) => ({
     ...cache,
     [products[key]]: products[key] in cache ?

@@ -12,7 +12,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
         integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
         crossorigin="anonymous" />
-    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <!-- SweetAlert2 -->
+  <link rel="stylesheet" href="<?= URLROOT ?>/backend/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+    <!-- Toastr -->
+  <link rel="stylesheet" href="<?= URLROOT ?>/backend/plugins/toastr/toastr.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="<?= URLROOT ?>/public/css/product-details.css">
