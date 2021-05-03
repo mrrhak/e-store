@@ -24,6 +24,39 @@
          ?>
     </div>
     
+    <section class="new-arrival">
+              <!--products----------------------->
+              <div class="product-container">
+              
+              <?php
+                  foreach ($data["products"] as $key => $value) :
+              ?>
+               <div class="product-box">
+                      <!--product-img------------>
+                      <div class="product-img">
+                          <!--add-cart---->
+                          <a class="text-decoration-none add-cart">
+                              <i class="fas fa-shopping-cart"></i>
+                            </a>
+                          <!--img------>
+                          <a  href="<?php echo URLROOT."/products/details/".$value->id?>">
+                            <img src="<?= URLROOT.'/public/img/'.$value->image ?>">
+                          </a>
+                      </div>
+                      <!--product-details-------->
+                      <div class="product-details">
+                          <a href="#" class="p-name"><?php echo $value->name ?></a>
+                          <span class="p-price">$<?php echo $value->price ?></span>
+                      </div>
+                  </div>
+              
+              
+              <?php
+                 endforeach
+              ?>
+              </div>
+          </section>
+    
     
     
     

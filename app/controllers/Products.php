@@ -36,11 +36,13 @@
 
        public function details($id){
            $product = $this->productModel->findProductById($id);
+           $recomment = $this->productModel->recommentProducts('%'.$product->name.'%');
            $data = [
             'title' => 'Product Detail', // For make title
             "page" => "product detail", // For make menu active link
             'user' => $this->authUser ?? null, // User auth for use admin dashboard
             "product" => $product,
+            "recomments" =>  $recomment 
         ];
         return $this->view('frontend/product-detail' , $data) ;
        }

@@ -54,6 +54,14 @@
         }
      }
      
+     //create function recomment 
+     public function  recommentProducts($name){
+      $this->db->query('SELECT * FROM products WHERE name LIKE :name');
+      $this->db->bind(':name', $name);
+      $results = $this->db->resultSet() ;
+      return $results ;
+     }
+     
      //create function delete product
      public function deleteProductById($id){
         $this->db->query('DELETE FROM products  WHERE id=:id') ;
