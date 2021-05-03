@@ -92,8 +92,8 @@
               foreach ($data["banners"] as $key => $value) :
             ?>
 
-            <div class="col-12 col-sm-8 col-md-3 col-lg-1 my-3 p-0 m-0 rounded-md px-2">
-                <a class="text-decoration-none" href="<?php echo URLROOT."/product/".$value->id?>">
+            <div class="col-12 col-sm-8 col-md-3 col-lg-2 my-3 p-0 m-0 rounded-md px-2">
+                <a class="text-decoration-none" href="<?php echo "#"//echo URLROOT."/products/details/".$value->banner_id?>">
                     <img class=" card-img m-auto" src="public/img/<?=$value->image ?>" alt="Vans"
                         style="height:100px; width:100px; border-radius:100% ; object-fit: cover">
                     <div class="card-body text-center py-2 m-0  px-1 p-0" style="line-height:1px">
