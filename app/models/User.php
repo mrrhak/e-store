@@ -22,9 +22,12 @@ class User
 
   public function register($data)
   {
-    $this->db->query("INSERT INTO users (username, email, role, password) VALUES (:username, :email, :role, :password)");
+    $this->db->query("INSERT INTO users (username, email, phone, address1, address2, role, password) VALUES (:username, :email, :phone, :address1, :address2, :role, :password)");
     $this->db->bind(':username', $data['username']);
     $this->db->bind(':email', $data['email']);
+    $this->db->bind(':phone', $data['phone']);
+    $this->db->bind(':address1', $data['address1']);
+    $this->db->bind(':address2', $data['address2']);
     $this->db->bind(':role', $data['role'] ?? 'customer');
     $this->db->bind(':password', $data['password']);
 
@@ -100,9 +103,12 @@ class User
 
   public function updateById($data, $id)
   {
-    $this->db->query("UPDATE users SET username = :username, email = :email, role = :role, password = :password WHERE id = :id");
+    $this->db->query("UPDATE users SET username = :username, email = :email, role = :role, phone = :phone, address1 = :address1, address2 = :address2, password = :password WHERE id = :id");
     $this->db->bind(':username', $data['username']);
     $this->db->bind(':email', $data['email']);
+    $this->db->bind(':phone', $data['phone']);
+    $this->db->bind(':address1', $data['address1']);
+    $this->db->bind(':address2', $data['address2']);
     $this->db->bind(':role', $data['role']);
     $this->db->bind(':password', $data['password']);
     $this->db->bind(':id', $id);

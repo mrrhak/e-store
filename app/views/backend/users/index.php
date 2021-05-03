@@ -40,21 +40,21 @@ require_once APPROOT.'/views/backend/layouts/header.php';
                         </div>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                <span class="input-group-text"><i class="fas fa-phone"></i></span>
                             </div>
-                            <input name="phone" type="text" class="form-control" placeholder="Phone">
+                            <input name="phone" type="text" class="form-control" placeholder="Phone (Optional)">
                         </div>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                <span class="input-group-text"><i class="fas fa-address-card"></i></span>
                             </div>
-                            <input name="address1" type="text" class="form-control" placeholder="Address 1">
+                            <input name="address1" type="text" class="form-control" placeholder="Address 1 (Optional)">
                         </div>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                <span class="input-group-text"><i class="fas fa-address-card"></i></span>
                             </div>
-                            <input name="address2" type="text" class="form-control" placeholder="Address 2">
+                            <input name="address2" type="text" class="form-control" placeholder="Address 2 (Optional)">
                         </div>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
@@ -105,6 +105,24 @@ require_once APPROOT.'/views/backend/layouts/header.php';
                                 <span class="input-group-text"><i class="fas fa-envelope"></i></span>
                             </div>
                             <input id="edit_email" name="email" type="email" class="form-control" placeholder="Email">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                            </div>
+                            <input id="edit_phone" name="phone" type="text" class="form-control" placeholder="Phone (Optional)">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-address-card"></i></span>
+                            </div>
+                            <input id="edit_address1" name="address1" type="text" class="form-control" placeholder="Address 1 (Optional)">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-address-card"></i></span>
+                            </div>
+                            <input id="edit_address2" name="address2" type="text" class="form-control" placeholder="Address 2 (Optional)">
                         </div>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
@@ -286,6 +304,9 @@ $(function() {
                 // console.log(response);
                 $('#edit_username').val(response.username);
                 $('#edit_email').val(response.email);
+                $('#edit_phone').val(response.phone);
+                $('#edit_address1').val(response.address1);
+                $('#edit_address2').val(response.address2);
 
                 $("#edit_role option[value='" + response.role + "']").prop('selected',
                     true);
