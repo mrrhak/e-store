@@ -61,6 +61,15 @@
         $this->db->execute();
        return $this->db->rowCount();
      }
+     
+     // get all products by category_id
+    
+     public function getAllProductsByCategory($id){
+      $this->db->query('SELECT * FROM products WHERE category_id = :id');
+      $this->db->bind(':id', $id);
+      $results = $this->db->resultSet() ;
+      return $results ;
+     }
     
     //find pdouct by id
     public function findProductById($id)

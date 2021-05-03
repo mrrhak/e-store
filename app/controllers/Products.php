@@ -20,6 +20,19 @@
                 // header('location: ' . URLROOT.'/auth/login');
             }
        }
+       
+       //get all products by category
+       public function  category($id){
+        $categories = $this->categoryModel->getAllCategory();
+        $products = $this->productModel->getAllProductsByCategory($id);
+        
+        $data = [
+          'title' => 'Category',
+          'categories' => $categories , 
+          'products' => $products
+        ];
+              return  $this->view("frontend/category" ,  $data) ;
+       }
 
        public function details($id){
            $product = $this->productModel->findProductById($id);
@@ -31,6 +44,7 @@
         ];
         return $this->view('frontend/product-detail' , $data) ;
        }
+       
        
        //product page index
        public  function index()
@@ -238,6 +252,9 @@
     
 
 
-}
+
+
+        }
+        
 
 ?>
