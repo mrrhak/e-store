@@ -6,6 +6,7 @@
     protected $params = [];
 
     public function __construct(){
+      date_default_timezone_set("Asia/Bangkok");
       $url = $this->getUrl();
       // Look in controllers at first array
       if(isset($url[0])){
