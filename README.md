@@ -100,12 +100,21 @@ Email: customer@gmail.com
 
 ### Frontend Feature
 - **[Home](#home)**
+- **[Product Detail](#product-detail)**
+- **[My Account](#my-account)**
+
 ### Backend Feature
 - **[Dashboard](#dashboard)**
 
 ## Frontend UI
 ### Home
-- Not yet available
+<img height="450px" src="public/screenshots/home.png">
+
+### Product Detail
+<img height="450px" src="public/screenshots/product-details.jpg">
+
+### My Account
+<img height="450px" src="public/screenshots/my-account-page.jpg">
 
 ## Backend UI
 ### Dashboard
