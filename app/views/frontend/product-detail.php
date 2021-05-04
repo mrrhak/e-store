@@ -15,7 +15,7 @@
       <div class="details container">
         <div class="left">
           <div class="main">
-            <img src="<?= URLROOT.'/public/img/'.$product->image ?>">
+            <img src="<?= URLROOT.'/public/uploads/'.$product->image ?>">
           </div>
         </div>
         <div class="right">
@@ -66,7 +66,7 @@
                             </a>
                           <!--img------>
                           <a  href="<?php echo URLROOT."/products/details/".$value->id?>">
-                            <img src="<?= URLROOT.'/public/img/'.$value->image ?>">
+                            <img src="<?= URLROOT.'/public/uploads/'.$value->image ?>">
                           </a>
                       </div>
                       <!--product-details-------->

@@ -37,7 +37,7 @@ require_once APPROOT.'/views/backend/layouts/header.php';
                             </th>
                             <td>
                                 <img style="width:100px ; height:100px; ; object-fit:cover ; border-radius:10px"
-                                    src="public/img/<?=$value->image ?>">
+                                    src="<?= URLROOT ?>/public/uploads/<?=$value->image ?>">
                             </td>
                             <td class="pt-4"><?= $value->title ?></td>
                             <td class="pt-4"><?= $value->category_name?></td>
