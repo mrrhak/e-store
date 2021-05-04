@@ -31,26 +31,26 @@
             endforeach;
          ?>
     </div>
-    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <!-- <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner mt-5">
 
             <div class="carousel-item active">
-                <img class="d-block w-100" src="public/img/<?php echo $data["banners"][0]->image ?>">
+                <img class="d-block w-100" src="public/img/<?php //echo $data["banners"][0]->image ?>">
             </div>
             <?php
-                 foreach ($data["banners"] as $key => $value) :
+                 //foreach ($data["banners"] as $key => $value) :
               ?>
-            <?php if( $value->category_name === "Fashions"): ?>
+            <?php //if( $value->category_name === "Fashions"): ?>
             <div class="carousel-item<?php
-             if($key===0) :
+             //if($key===0) :
             ?> active <?php
-                endif
+                //endif
             ?>">
-                <img class="d-block w-100" src="public/img/<?php echo $value->image  ?>">
+                <img class="d-block w-100" src="public/img/<?php //echo $value->image  ?>">
             </div>
-            <?php  endif ;?>
+            <?php  //endif ;?>
             <?php
-               endforeach ;
+               //endforeach ;
             ?>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -61,50 +61,70 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>
-    </div>
+    </div> -->
 
-    <div class="container">
-        <h3 class="justify-content-center py-5 d-flex align-items-start">PRODUCTS FEATURE</h3>
-        <div class="row d-flex flex-wrap">
-            <?php
-              foreach ($data["products"] as $key => $value) :
-            ?>
+    <!--  -->
 
-            <div class="col-12 col-sm-8 col-md-3 col-lg-2 my-3 p-0 m-0 rounded-md px-2">
-                <a class="text-decoration-none" href="<?php echo URLROOT."/products/details/".$value->id?>">
-                    <img class=" card-img" src="public/img/<?=$value->image ?>" alt="Vans"
-                        style="height:150px; object-fit: cover">
-                    <div class="card-body py-2 m-0  px-1 p-0" style="line-height:1px">
-                        <h6 class="text-danger">$ <?php echo $value->price ?></h6>
-                        <p class="text-secondary" style="font-size:14px"><?php echo $value->category_name ?></p>
+    <section class="pt-3 pb-5">
+        <div class="container">
+            <h1 class="text-center pb-4">PRODUCTS FEATURE</h1>
+            <div class="row mb-md-2">
+                <?php
+                foreach ($products as $key => $product) :
+                ?>
+
+            	<div class="col-md-6 col-lg-4">
+                    <a href="<?php echo URLROOT."/products/details/".$product->id?>">
+                    <div class="card shadow-sm border-light mb-4">
+                        <img src="public/img/<?=$product->image ?>" class="card-img-top" style="object-fit: cover" alt="<?= $product->name ?>">
+                        <div class="card-body">
+                                <h5 class="font-weight-normal text-primary"><?= mb_strimwidth($product->name, 0, 70, "...") ?></h5>
+                            <div class="post-meta"><span class="small lh-120 text-secondary"><?= mb_strimwidth($product->description, 0, 100, "...") ?></span></div>
+                            <div class="d-flex my-4">
+                                <i class="star fas fa-star text-warning"></i>
+                                <i class="star fas fa-star text-warning"></i>
+                                <i class="star fas fa-star text-warning"></i>
+                                <i class="star fas fa-star text-warning"></i>
+                                <i class="star fas fa-star text-warning"></i>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <div class="col pl-0"><span class="text-muted font-small d-block mb-2">Price</span> <span class="h5 text-dark font-weight-bold">$<?= $product->price ?></span></div>
+                                <div class="col"><span class="text-muted font-small d-block mb-2">Category</span> <span class="h5 text-dark font-weight-bold"><?= mb_strimwidth($product->category_name, 0, 10, "...") ?></span></div>
+                                <div class="col pr-0"><span class="text-muted font-small d-block mb-2">Available</span> <span class="h5 text-dark font-weight-bold"><?= $product->qty ?></span></div>
+                            </div>
+                        </div>
                     </div>
-                </a>
+                    </a>
+                </div>
+
+                <?php
+                endforeach
+                ?>
             </div>
-            <?php
-               endforeach
-            ?>
         </div>
-    </div>
-    <div class="container">
-        <h3 class="justify-content-center py-5 d-flex align-items-start">PARTNER</h3>
-        <div class="row d-flex flex-wrap">
-            <?php
-              foreach ($data["banners"] as $key => $value) :
-            ?>
+    </section>            
 
-            <div class="col-12 col-sm-8 col-md-3 col-lg-2 my-3 p-0 m-0 rounded-md px-2">
-                <a class="text-decoration-none"
-                    href="<?php echo "#"//echo URLROOT."/products/details/".$value->banner_id?>">
-                    <img class=" card-img m-auto" src="public/img/<?=$value->image ?>" alt="Vans"
-                        style="height:100px; width:100px; border-radius:100% ; object-fit: cover">
-                    <div class="card-body text-center py-2 m-0  px-1 p-0" style="line-height:1px">
-                        <p class="text-secondary mt-1" style="font-size:14px"><?php echo $value->title ?></p>
-                    </div>
-                </a>
-            </div>
+    
+    <!--  -->
+
+    <div class="container">
+        <h3 class="text-center py-3">PARTNER</h3>
+        <div class="row mb-md-2">
             <?php
-               endforeach
+              foreach ($banners as $key => $banner) :
             ?>
+            <div class="col-md-3 col-lg-2">
+                <!-- <a href="#"> -->
+                <div class="card shadow-sm border-light mb-4">
+                    <img src="public/img/<?=$banner->image ?>" class="card-img-top" style="height: 130px; object-fit: cover;" alt="<?= $banner->title ?>">
+                    <div class="card-body">
+                        <h6 class="font-weight-normal text-primary text-center"><?= mb_strimwidth($banner->title, 0, 25, "...") ?></h6>
+                    </div>
+                </div>
+                <!-- </a> -->
+            </div>
+
+            <?php endforeach ?>
         </div>
     </div>
 
