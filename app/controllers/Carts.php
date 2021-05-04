@@ -10,38 +10,42 @@ class Carts extends Controller {
 			if($this->authUser == null){
 				$this->logout();
 			}
+	  }
 	}
-	}
-  public function create(){
-		header('Content-type: application/json');
+  public function ajaxCreate(){
+    header('Content-type: application/json');
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
       $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-      $data = [
-        'user_id' => strtolower(trim($_POST['user_id'])),
-        'product_id' => strtolower(trim($_POST['product_id'])),
-        'qty' => trim($_POST['qty']),
-      ];
-      $errors = [];
-      if((int)$data['qty']<1){
-        $errors['qtyError'] = 'Please enter username';
-      }
-      if(empty($errors)){
-        // Register user from model function
-        if($this->Cart->addCard($data)){
-          // Redirect to the login page
-          http_response_code(201);
-          echo json_encode($data);
-        }
-      }
-      else{
-        http_response_code(404);
-        echo json_encode([
-            'errors' => $errors
-        ]);
-      }
+      // echo json_encode(['success'=>'request succesfuly!','data' => $_POST]); 
+      try {
+        $data = [
+          'userId' => isset($_POST['userId']) ? $_POST['userId'] : '',
+          'productId' => isset($_POST['productId']) ? $_POST['productId'] : '',
+          'qty' => $_POST['qty']
+        ];
+        $errors = [];    
+        if($data['userId'] == '') $errors['user'] = 'Please login fisrt...!';
+        if($data['qty'] < 1) $errors['qty'] = "Quatity can't less than 1...!"; 
+        if(!empty($errors)) {echo json_encode(['errors'=>$errors]); return;};
+        $cart = $this->Cart->getCartByProductId($data['productId']);
+        if($cart!=null) $this->Cart->updateQtyCart($cart->cart_id,$cart->qty+$data['qty']); 
+        else $this->Cart->addCard($data);
 
+        $data['countCart'] = $this->countCartByUserId();
+
+        echo json_encode(['success' => 'Product was add to cart successfuly','data' => $data]);
+      } catch (\Throwable $th) {
+        echo json_encode($th->getMessage()) ;
+      }
     }
-    
+  }
+  public function countCartByUserId(){
+    header('Content-type: application/json');
+    $userId = $this->session->get('user_id');
+    if(!$userId) return;
+    $result = $this->Cart->countCartByUserId($userId);
+    if($_SERVER['REQUEST_METHOD'] == 'GET') echo json_encode(['countCart'=> $result]);
+    else return $result;
   }
 	public function logout() {
     $this->session->remove('user_id');

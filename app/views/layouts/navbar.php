@@ -27,7 +27,7 @@ require_once '../app/helpers/Session.php';
             <ul class="mb-2 mb-lg-0" style="display: flex">
                 <button class="btn">
                     <i class="fa fa-shopping-cart">
-                        <span class="bage"> 0</spa>
+                        <span id="cartBage" class="bage"> 0</spa>
                     </i>
                     Cart
                 </button>
