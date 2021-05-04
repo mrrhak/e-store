@@ -108,8 +108,86 @@ class Users extends Controller{
           $data = [
             'username' => $inputUsername,
             'email' => $inputEmail,
+            'phone' => trim($_POST['phone']),
+            'address1' => trim($_POST['address1']),
+            'address2' => trim($_POST['address2']),
             'password' => $inputPassword,
             'role' => $inputRole,
+          ];
+          
+          if($this->userModel->updateById($data, $id)){
+            // Redirect to the login page
+            http_response_code(202);
+            echo json_encode($data);
+          }
+          else{
+            http_response_code(404);
+            echo json_encode(['message'=> 'Failed to update user']);
+          }
+        }
+      }
+      else{
+        http_response_code(404);
+        echo json_encode(['message'=> 'Failed to update user or it was deleted']);
+      }
+    }
+    else{
+      http_response_code(404);
+      echo json_encode(['message'=> 'Failed']);
+    }
+  }
+
+  public function ajaxFrontendUpdate($id){
+
+    header('Content-type: application/json');
+
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+      // Santize post data
+      $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+      $errors = [];
+      
+      $nameValidation = "/^[a-zA-Z0-9]*$/";
+
+      // Get User for check
+      $user = $this->userModel->findUserById($id);
+      
+      if($user){
+        
+        $inputPassword = trim($_POST['password']);
+        // If Change
+        if(!empty($inputPassword)){
+          // Validate password on length and numeric value
+          if(strlen($inputPassword) < 6){
+            $errors['passwordError'] = 'Password must be at least 6 characters';
+          }
+          else{
+            // New password will save to db
+             $inputPassword = password_hash($inputPassword, PASSWORD_DEFAULT);
+          }
+        }
+        else{
+          // Old password will save to db
+          $inputPassword = $user->password;
+        }
+
+        // If have any errors
+        if(!empty($errors)){
+          http_response_code(404);
+          echo json_encode([
+              'errors' => $errors
+          ]);
+        }
+        else{
+          // Everything is OK
+          $data = [
+            'username' => $user->username,
+            'email' => $user->email,
+            'phone' => trim($_POST['phone']),
+            'address1' => trim($_POST['address1']),
+            'address2' => trim($_POST['address2']),
+            'password' => $inputPassword,
+            'role' => $user->role,
           ];
           
           if($this->userModel->updateById($data, $id)){
@@ -184,6 +262,9 @@ class Users extends Controller{
       $data = [
         'username' => strtolower(trim($_POST['username'])),
         'email' => strtolower(trim($_POST['email'])),
+        'phone' => trim($_POST['phone']),
+        'address1' => trim($_POST['address1']),
+        'address2' => trim($_POST['address2']),
         'password' => trim($_POST['password']),
         'role' => strtolower(trim($_POST['role'])),
       ];

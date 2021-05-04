@@ -54,12 +54,29 @@
         }
      }
      
+     //create function recomment 
+     public function  recommentProducts($name){
+      $this->db->query('SELECT * FROM products WHERE name LIKE :name');
+      $this->db->bind(':name', $name);
+      $results = $this->db->resultSet() ;
+      return $results ;
+     }
+     
      //create function delete product
      public function deleteProductById($id){
         $this->db->query('DELETE FROM products  WHERE id=:id') ;
         $this->db->bind(':id' , $id) ;
         $this->db->execute();
        return $this->db->rowCount();
+     }
+     
+     // get all products by category_id
+    
+     public function getAllProductsByCategory($id){
+      $this->db->query('SELECT * FROM products WHERE category_id = :id');
+      $this->db->bind(':id', $id);
+      $results = $this->db->resultSet() ;
+      return $results ;
      }
     
     //find pdouct by id

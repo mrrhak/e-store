@@ -1,20 +1,19 @@
 <?php
-class Cart extends Controller {
+class Carts extends Controller {
+	private $authUser;
 	public  function __construct() {
 		parent::__construct(); // For init session
+		$this->userModel = $this->model('User');
     $this->Cart = $this->model('Cart');
-		// $this->db = new Database();
-		if ($this->session->get('user_id')) {
-			if ($this->user->role != 'admin') {
-				header('location: ' . URLROOT);
+		if ($userId = $this->session->get('user_id')) {
+			$this->authUser = $this->userModel->findUserById($userId);
+			if($this->authUser == null){
+				$this->logout();
 			}
-		} else {
-			header('location: ' . URLROOT . '/auth/login');
-		}
+	}
 	}
   public function create(){
-    header('Content-type: application/json');
-    
+		header('Content-type: application/json');
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
       $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
       $data = [
@@ -22,14 +21,13 @@ class Cart extends Controller {
         'product_id' => strtolower(trim($_POST['product_id'])),
         'qty' => trim($_POST['qty']),
       ];
-
       $errors = [];
       if((int)$data['qty']<1){
         $errors['qtyError'] = 'Please enter username';
       }
       if(empty($errors)){
         // Register user from model function
-        if($this->Cart->store($data)){
+        if($this->Cart->addCard($data)){
           // Redirect to the login page
           http_response_code(201);
           echo json_encode($data);
@@ -43,6 +41,12 @@ class Cart extends Controller {
       }
 
     }
+    
+  }
+	public function logout() {
+    $this->session->remove('user_id');
+    $this->session->remove('username');
+    header('location:' . URLROOT . '/users/login');
   }
 
 }

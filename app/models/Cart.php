@@ -15,8 +15,8 @@ class Cart {
   }
   
   public function addCard($data) {
-    $this->db->query("INSERT INTO carts (user_id, product_id, qty) VALUES (:carts, :product_id, :qty, :password)");
-    $this->db->bind(':carts', $data['carts']);
+    $this->db->query("INSERT INTO carts (user_id, product_id, qty) VALUES (:user_id, :product_id, :qty)");
+    $this->db->bind(':user_id', $data['user_id']);
     $this->db->bind(':product_id', $data['product_id']);
     $this->db->bind(':qty', $data['qty']);
     // Execute function
