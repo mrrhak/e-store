@@ -48,10 +48,20 @@
      
      //create function delete product
      public function deleteBannerById($id){
-        $this->db->query('DELETE FROM banners  WHERE  banner_id=:banner_id') ;
-        $this->db->bind(':banner_id' , $id) ;
-        $this->db->execute();
-       return $this->db->rowCount();
+        // FineOne to remove image
+        $deleteBanner = $this->findBannerById($id);
+        if($deleteBanner != null){
+            //Remove Image
+            $imagePath = "../public/uploads/".$deleteBanner->image;
+            if(file_exists($imagePath)){
+              unlink($imagePath);
+            }
+
+            $this->db->query('DELETE FROM banners  WHERE  banner_id = :banner_id') ;
+            $this->db->bind(':banner_id', $deleteBanner->banner_id) ;
+            $this->db->execute();
+            return $this->db->rowCount();
+        }
      }
     
     //find pdouct by id
@@ -87,10 +97,21 @@
         }
         
         if(empty($errors)) {
-            move_uploaded_file($_FILES[$file]['tmp_name'],  $_SERVER['DOCUMENT_ROOT']."/e-store/public/img/".$_FILES[$file]['name']);
-              $temp = $_FILES[$file]['name'] ;
+            $filename = $_FILES[$file]['name'];
+            if(move_uploaded_file($_FILES[$file]['tmp_name'], "../public/uploads/".$filename)){
+              return [
+                'name' => $filename ,
+                'success' => true
+              ];
+            }
+            else {
+              return [
+                'errors' => "Upload banner imgae failed.",
+                'success' =>  false
+              ];
+            } 
             return [
-                'name' => $temp ,
+                'name' => $filename ,
                 'success' => true
               ];
           } else {
