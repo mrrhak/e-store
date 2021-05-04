@@ -64,10 +64,20 @@
      
      //create function delete product
      public function deleteProductById($id){
-        $this->db->query('DELETE FROM products  WHERE id=:id') ;
-        $this->db->bind(':id' , $id) ;
-        $this->db->execute();
-       return $this->db->rowCount();
+       // FineOne to remove image
+       $deleteProduct = $this->findProductById($id);
+       if($deleteProduct != null){
+          //Remove Image
+          $imagePath = "../public/uploads/".$deleteProduct->image;
+          if(file_exists($imagePath)){
+            unlink($imagePath);
+          }
+
+          $this->db->query('DELETE FROM products  WHERE id=:id') ;
+          $this->db->bind(':id' , $deleteProduct->id) ;
+          $this->db->execute();
+          return $this->db->rowCount();
+       }
      }
      
      // get all products by category_id
@@ -112,12 +122,19 @@
         }
         
         if(empty($errors)) {
-            move_uploaded_file($_FILES[$file]['tmp_name'],  $_SERVER['DOCUMENT_ROOT']."/e-store/public/img/".$_FILES[$file]['name']);
-              $temp = $_FILES[$file]['name'] ;
-            return [
-                'name' => $temp ,
+            $filename = $_FILES[$file]['name'];
+            if(move_uploaded_file($_FILES[$file]['tmp_name'], "../public/uploads/".$filename)){
+              return [
+                'name' => $filename ,
                 'success' => true
               ];
+            }
+            else {
+              return [
+                'errors' => "Upload product imgae failed.",
+                'success' =>  false
+              ];
+            } 
           } else {
             return [
               'errors' => $errors,
@@ -125,11 +142,7 @@
             ];
           }
         }
-    
+
     }
-    
-
-
-  
    }
 ?>

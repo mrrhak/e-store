@@ -31,39 +31,27 @@
             endforeach;
          ?>
     </div>
-    <!-- <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner mt-5">
 
-            <div class="carousel-item active">
-                <img class="d-block w-100" src="public/img/<?php //echo $data["banners"][0]->image ?>">
-            </div>
+    <div class="container">
+        <h3 class="text-center py-3">PARTNER</h3>
+        <div class="row mb-md-2">
             <?php
-                 //foreach ($data["banners"] as $key => $value) :
-              ?>
-            <?php //if( $value->category_name === "Fashions"): ?>
-            <div class="carousel-item<?php
-             //if($key===0) :
-            ?> active <?php
-                //endif
-            ?>">
-                <img class="d-block w-100" src="public/img/<?php //echo $value->image  ?>">
-            </div>
-            <?php  //endif ;?>
-            <?php
-               //endforeach ;
+              foreach ($banners as $key => $banner) :
             ?>
-        </div>
-        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-    </div> -->
+            <div class="col-md-3 col-lg-2">
+                <!-- <a href="#"> -->
+                <div class="card shadow-sm border-light mb-4">
+                    <img src="<?= URLROOT ?>/public/uploads/<?=$banner->image ?>" class="card-img-top" style="height: 130px; object-fit: cover;" alt="<?= $banner->title ?>">
+                    <div class="card-body">
+                        <h6 class="font-weight-normal text-primary text-center"><?= mb_strimwidth($banner->title, 0, 25, "...") ?></h6>
+                    </div>
+                </div>
+                <!-- </a> -->
+            </div>
 
-    <!--  -->
+            <?php endforeach ?>
+        </div>
+    </div>
 
     <section class="pt-3 pb-5">
         <div class="container">
@@ -76,7 +64,7 @@
             	<div class="col-md-6 col-lg-4">
                     <a href="<?php echo URLROOT."/products/details/".$product->id?>">
                     <div class="card shadow-sm border-light mb-4">
-                        <img src="public/img/<?=$product->image ?>" class="card-img-top" style="object-fit: cover" alt="<?= $product->name ?>">
+                        <img src="<?= URLROOT ?>/public/uploads/<?=$product->image ?>" class="card-img-top" style="object-fit: cover" alt="<?= $product->name ?>">
                         <div class="card-body">
                                 <h5 class="font-weight-normal text-primary"><?= mb_strimwidth($product->name, 0, 70, "...") ?></h5>
                             <div class="post-meta"><span class="small lh-120 text-secondary"><?= mb_strimwidth($product->description, 0, 100, "...") ?></span></div>
@@ -102,32 +90,7 @@
                 ?>
             </div>
         </div>
-    </section>            
-
-    
-    <!--  -->
-
-    <div class="container">
-        <h3 class="text-center py-3">PARTNER</h3>
-        <div class="row mb-md-2">
-            <?php
-              foreach ($banners as $key => $banner) :
-            ?>
-            <div class="col-md-3 col-lg-2">
-                <!-- <a href="#"> -->
-                <div class="card shadow-sm border-light mb-4">
-                    <img src="public/img/<?=$banner->image ?>" class="card-img-top" style="height: 130px; object-fit: cover;" alt="<?= $banner->title ?>">
-                    <div class="card-body">
-                        <h6 class="font-weight-normal text-primary text-center"><?= mb_strimwidth($banner->title, 0, 25, "...") ?></h6>
-                    </div>
-                </div>
-                <!-- </a> -->
-            </div>
-
-            <?php endforeach ?>
-        </div>
-    </div>
-
+    </section>
 </main>
 
 

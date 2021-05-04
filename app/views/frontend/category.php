@@ -40,7 +40,7 @@
                             </a>
                           <!--img------>
                           <a  href="<?php echo URLROOT."/products/details/".$value->id?>">
-                            <img src="<?= URLROOT.'/public/img/'.$value->image ?>">
+                            <img src="<?= URLROOT.'/public/uploads/'.$value->image ?>">
                           </a>
                       </div>
                       <!--product-details-------->
