@@ -26,7 +26,13 @@
   <script src="<?= URLROOT ?>/backend/plugins/toastr/toastr.min.js"></script>
   <!-- AdminLTE App -->
   <script src="<?= URLROOT ?>/backend/js/adminlte.min.js"></script>
-
+  <script>
+  function refresh(time) {
+            setTimeout(function() {
+                location.reload()
+            }, time);
+        }
+  </script>
 
   <!-- AdminLTE for demo purposes -->
   <script src="<?= URLROOT ?>\backend\js\demo.js"></script>

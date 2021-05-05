@@ -227,7 +227,7 @@ require_once APPROOT . '/views/layouts/header.php';
         }else{
           Toast.fire({
             icon: 'error',
-            title: '&nbsp;&nbsp;'+(response.errors.user == undefined ? response.errors.qty : 'Something went wrong!')
+            title: '&nbsp;&nbsp;'+"Something went wrong!"
           });
         }        
       },
