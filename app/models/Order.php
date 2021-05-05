@@ -5,10 +5,28 @@ class Order {
     $this->db = new Database;
   }
   
+  public function getInfos(){
+    $this->db->query('SELECT *,users.username,users.phone,orders.order_date as orderDate FROM orders join users on users.id = orders.user_id ORDER BY orders.order_date DESC');
+    return $this->db->resultSet();
+  }
+
+  public function updateStatus($id,$status){
+    try {
+      $this->db->query("UPDATE orders SET status = :status WHERE order_id = :id");
+      $this->db->bind(':id', $id);
+      $this->db->bind(':status', $status);
+      // Execute function
+      if ($this->db->execute()) return true;  else return false;
+    } catch (\Throwable $th) {
+      throw new Exception($th->getMessage());
+    } 
+  }
+
   public function store($data){
     try {
-      $this->db->query("INSERT INTO orders (user_id, total_amount) VALUES (:userId, :totalAmount)");
+      $this->db->query("INSERT INTO orders (user_id, total_amount,order_date) VALUES (:userId, :totalAmount,:order_date)");
       $this->db->bind(':userId', $data['userId']);
+      $this->db->bind(':order_date', date("Y-m-d H:i:s"));
       $this->db->bind(':totalAmount', $data['totalAmount']);
       if($this->db->execute()){
         $orderId = $this->db->lastInsertId();

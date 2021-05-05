@@ -13,6 +13,25 @@ class Orders extends Controller {
         }
     }
 	}
+  public function index(){
+    $data = [
+      'orders' => $this->orderModel->getInfos(),
+      'user' => $this->authUser ?? null,
+    ];
+    $this->view('backend/products/order', $data);
+
+  }
+  
+  public function updateStatusOrder($id,$status){
+    header('Content-type: application/json');
+    if($_SERVER['REQUEST_METHOD'] == 'PUT'){
+      if($this->orderModel->updateStatus($id,$status))
+        echo json_encode(['success' => 'Successfuly!']); 
+      else 
+        echo json_encode(['errors' => 'Failed!']);
+    }    
+  }
+
   public function ajaxPlaceOrder(){
     header('Content-type: application/json');
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
