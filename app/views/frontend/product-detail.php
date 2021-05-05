@@ -104,11 +104,11 @@
       contentType: false,
       processData: false,
       success: (response) => {
-        console.log(response);
+        console.log(response);      
         if(response.errors){
           Toast.fire({
             icon: 'error',
-            title: '&nbsp;&nbsp;'+response.errors.user
+            title: '&nbsp;&nbsp;'+(response.errors.user == undefined ? response.errors.qty : 'Something went wrong!')
           });
         }else{
           $('#cartBage').text(response.data.countCart)
