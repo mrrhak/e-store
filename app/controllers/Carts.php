@@ -27,7 +27,7 @@ class Carts extends Controller {
         if($data['userId'] == '') $errors['user'] = 'Please login fisrt...!';
         if($data['qty'] < 1) $errors['qty'] = "Quatity can't less than 1...!"; 
         if(!empty($errors)) {echo json_encode(['errors'=>$errors]); return;};
-        $cart = $this->Cart->getCartByProductId($data['productId']);
+        $cart = $this->Cart->getCartByProductIdAndUserId($data['productId'],$this->session->get('user_id'),0);
         if($cart!=null) $this->Cart->updateQtyCart($cart->cart_id,$cart->qty+$data['qty']); 
         else $this->Cart->addCard($data);
 
@@ -43,7 +43,7 @@ class Carts extends Controller {
     header('Content-type: application/json');
     $userId = $this->session->get('user_id');
     if(!$userId) return;
-    $result = $this->Cart->countCartByUserId($userId);
+    $result = $this->Cart->countCartByUserId($userId,0);
     if($_SERVER['REQUEST_METHOD'] == 'GET') echo json_encode(['countCart'=> $result]);
     else return $result;
   }
@@ -52,5 +52,4 @@ class Carts extends Controller {
     $this->session->remove('username');
     header('location:' . URLROOT . '/users/login');
   }
-
 }

@@ -37,16 +37,19 @@ class Cart {
       throw new Exception($th->getMessage());
     }    
   }
-  public function getCartByProductId($id) {
-    $this->db->query('SELECT * FROM carts WHERE product_id = :id');
+  public function getCartByProductIdAndUserId($id,$userId,$status) {
+    $this->db->query('SELECT * FROM carts WHERE product_id = :id AND user_id = :userId AND status = :status');
     $this->db->bind(':id', $id);
+    $this->db->bind(':userId', $userId);
+    $this->db->bind(':status', $status);
     $result = $this->db->single();
     return $result;
   }
-  public function countCartByUserId($user_id) {
+  public function countCartByUserId($user_id,$status) {
     try {
-      $this->db->query('SELECT COUNT(*) FROM carts JOIN users ON carts.user_id = users.id WHERE id = :user_id');
+      $this->db->query('SELECT COUNT(*) FROM carts JOIN users ON carts.user_id = users.id WHERE id = :user_id AND status = :status');
       $this->db->bind(':user_id', $user_id);
+      $this->db->bind(':status', $status);
       return $this->db->count();
     } catch (\Throwable $th) {
       throw new Exception($th->getMessage());
