@@ -1,15 +1,6 @@
 <?php
 class Cart {
-
-  public int $cart_id;
-  public int $user_id;
-  public int $product_id;
-  public int $qty;
-  public int $created_at;
-  public int $status = 0;
-
   private Database $db;
-
   public function __construct(){
     $this->db = new Database;
   }
@@ -26,9 +17,10 @@ class Cart {
       throw new Exception($th->getMessage());
     }    
   }
-  public function find($cart_id){
-    $this->db->query('SELECT * FROM carts WHERE cart_id = :cart_id');
-    $this->db->bind(':cart_id', $cart_id);
+  public function find($cartId,$status){
+    $this->db->query("SELECT *,carts.qty as 'cart_qty' FROM carts join products on carts.product_id = products.id where carts.status = :status and carts.cart_id = :cartId");
+    $this->db->bind(':cartId', $cartId);
+    $this->db->bind(':status', $status);
     $results = $this->db->single() ;
     return $results ;
   }
@@ -49,13 +41,24 @@ class Cart {
       return $this->db->resultSet();
     } catch (\Throwable $th) {
       throw new Exception($th->getMessage());
-    }    
+    }
   }
   public function updateQtyCart($id,$qty) {
     try {
       $this->db->query("UPDATE carts SET qty = :qty WHERE cart_id = :id");
       $this->db->bind(':id', $id);
       $this->db->bind(':qty', $qty);
+      // Execute function
+      if ($this->db->execute()) return true;  else return false;
+    } catch (\Throwable $th) {
+      throw new Exception($th->getMessage());
+    }    
+  }
+  public function updateStatusCart($id,$status) {
+    try {
+      $this->db->query("UPDATE carts SET status = :status WHERE cart_id = :id");
+      $this->db->bind(':id', $id);
+      $this->db->bind(':status', $status);
       // Execute function
       if ($this->db->execute()) return true;  else return false;
     } catch (\Throwable $th) {
