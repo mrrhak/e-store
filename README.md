@@ -108,7 +108,7 @@ Email: customer@gmail.com
 
 ## Frontend UI
 ### Home
-<img height="3000px" src="public/screenshots/home.png">
+<img height="1500px" src="public/screenshots/home.png">
 
 ### Product Detail
 <img height="450px" src="public/screenshots/product-details.jpg">
