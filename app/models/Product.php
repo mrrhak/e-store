@@ -12,6 +12,12 @@
          $results = $this->db->resultSet() ;
          return $results ;
     }
+    public function find($id){
+         $this->db->query('SELECT * FROM products WHERE id = :id');
+         $this->db->bind(':id', $id);
+         $results = $this->db->single() ;
+         return $results ;
+    }
     
    //  this function create products
    public function create($data)

@@ -76,9 +76,7 @@
                           <a href="#" class="p-name"><?php echo $value->name ?></a>
                           <span class="p-price">$<?php echo $value->price ?></span>
                       </div>
-                  </div>
-              
-              
+                  </div>                        
               <?php
                  endforeach
               ?>
@@ -104,11 +102,11 @@
       contentType: false,
       processData: false,
       success: (response) => {
-        console.log(response);
+        console.log(response);      
         if(response.errors){
           Toast.fire({
             icon: 'error',
-            title: '&nbsp;&nbsp;'+response.errors.user
+            title: '&nbsp;&nbsp;'+(response.errors.user == undefined ? response.errors.qty : 'Something went wrong!')
           });
         }else{
           $('#cartBage').text(response.data.countCart)
