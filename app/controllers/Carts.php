@@ -13,6 +13,7 @@ class Carts extends Controller {
 			}
 	  }
 	}
+
   public function index(){
     $userId = $this->session->get('user_id');
     if (!$userId) {
@@ -68,6 +69,7 @@ class Carts extends Controller {
       }
     }
   }
+
   public function ajaxUpdateCartQty($id,$qty){
     $userId = $this->session->get('user_id');
     if (!$userId) {
@@ -93,6 +95,7 @@ class Carts extends Controller {
     if($_SERVER['REQUEST_METHOD'] == 'GET') echo json_encode(['countCart'=> $result]);
     else return $result;
   }
+
 	public function logout() {
     $this->session->remove('user_id');
     $this->session->remove('username');
