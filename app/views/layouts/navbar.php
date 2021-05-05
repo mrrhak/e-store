@@ -25,12 +25,12 @@ require_once '../app/helpers/Session.php';
                 <input class="btn" value="search" type="submit">
             </form>
             <ul class="mb-2 mb-lg-0" style="display: flex">
-                <button class="btn">
+                <a href="<?= URLROOT ?>/carts" class="btn">
                     <i class="fa fa-shopping-cart">
                         <span id="cartBage" class="bage"> 0</spa>
                     </i>
                     Cart
-                </button>
+                </a>
 
                 <?php if(!isset($user)) : ?>
                 <span>

@@ -76,9 +76,7 @@
                           <a href="#" class="p-name"><?php echo $value->name ?></a>
                           <span class="p-price">$<?php echo $value->price ?></span>
                       </div>
-                  </div>
-              
-              
+                  </div>                        
               <?php
                  endforeach
               ?>

@@ -4,6 +4,7 @@ class Carts extends Controller {
 	public  function __construct() {
 		parent::__construct(); // For init session
 		$this->userModel = $this->model('User');
+		$this->productModel = $this->model('Product');
     $this->Cart = $this->model('Cart');
 		if ($userId = $this->session->get('user_id')) {
 			$this->authUser = $this->userModel->findUserById($userId);
@@ -12,6 +13,21 @@ class Carts extends Controller {
 			}
 	  }
 	}
+  public function index(){
+    $userId = $this->session->get('user_id');
+    if (!$userId) {
+      header('location: ' . URLROOT.'/users/login');
+    }
+    $carts = $this->Cart->getAllCart($userId,0);
+    $data = [
+      'userId' => $userId,
+      'user' => $this->authUser,
+      'carts' => $carts
+    ];
+    
+    $this->view('frontend/cart-view',$data);
+  }
+
   public function ajaxCreate(){
     header('Content-type: application/json');
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -39,6 +55,36 @@ class Carts extends Controller {
       }
     }
   }
+
+  public function ajaxRemove($id){
+    header('Content-type: application/json');
+    if($_SERVER['REQUEST_METHOD'] == 'PUT'){
+      try {
+        $result = $this->Cart->deleteCart($id);
+        echo json_encode(['success' => 'remove product from cart success!']);
+        //echo json_encode($result);
+      } catch (\Throwable $th) {
+        echo json_encode($th->getMessage()) ;
+      }
+    }
+  }
+  public function ajaxUpdateCartQty($id,$qty){
+    $userId = $this->session->get('user_id');
+    if (!$userId) {
+      header('location: ' . URLROOT.'/users/login');
+    }
+    header('Content-type: application/json');
+    if($_SERVER['REQUEST_METHOD'] == 'PUT'){
+      try {
+        $data = $this->Cart->updateQtyCart($id,$qty);
+        if($data!=null) echo json_encode(['success' => 'update quantity success!','data'=>$data]);
+        else echo json_encode(['errors' => 'update quantity was failed!']);
+      } catch (\Throwable $th) {
+        echo json_encode($th->getMessage()) ;
+      }
+    }
+  }
+
   public function countCartByUserId(){
     header('Content-type: application/json');
     $userId = $this->session->get('user_id');

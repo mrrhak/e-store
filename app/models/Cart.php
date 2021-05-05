@@ -21,7 +21,32 @@ class Cart {
       $this->db->bind(':product_id', $data['productId']);
       $this->db->bind(':qty', $data['qty']);
       // Execute function
-      if ($this->db->execute()) return true;  else return false;
+      return $this->db->execute();
+    } catch (\Throwable $th) {
+      throw new Exception($th->getMessage());
+    }    
+  }
+  public function find($cart_id){
+    $this->db->query('SELECT * FROM carts WHERE cart_id = :cart_id');
+    $this->db->bind(':cart_id', $cart_id);
+    $results = $this->db->single() ;
+    return $results ;
+  }
+  public function deleteCart($id) {
+    try {
+      $this->db->query("DELETE FROM carts where cart_id = :id");
+      $this->db->bind(':id', $id);
+      return $this->db->execute();
+    } catch (\Throwable $th) {
+      throw new Exception($th->getMessage());
+    }    
+  }
+  public function getAllCart($userId,$status) {
+    try {
+      $this->db->query("SELECT *,carts.qty as 'cart_qty' FROM carts join products on carts.product_id = products.id where carts.status = :status and carts.user_id = :userId");
+      $this->db->bind(':userId', $userId);
+      $this->db->bind(':status', $status);
+      return $this->db->resultSet();
     } catch (\Throwable $th) {
       throw new Exception($th->getMessage());
     }    

@@ -1,0 +1,23 @@
+legend {
+    padding-bottom: 14px;
+    text-align: left;
+}
+fieldset {
+    margin-bottom: 14px;
+    padding-bottom: 14px;
+}
+fieldset, input[type="button"].btn-increase {
+    border: 0;
+}
+input[type="button"].btn-increase {
+    background-color: #ED5A48;
+    color: #fff;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+}
+input[type="text"].btn-increase {
+    border: 1px solid #F4F3F3;
+    height: 22px;
+    width: 50px;
+}
