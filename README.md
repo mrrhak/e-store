@@ -26,7 +26,7 @@ This project is for response to subject WAD's assignment under topic "E-Commerce
 - In graphical user interfaces, controller and view work very closely together.
 
 ## Relationship Daigram
-<img height="450px" src="public/screenshots/relationship-daigram.jpg">
+<img height="450px" src="public/screenshots/relationship-daigram.png">
 
 ## Git clone commands:
 ```
@@ -108,7 +108,7 @@ Email: customer@gmail.com
 
 ## Frontend UI
 ### Home
-<img height="450px" src="public/screenshots/home.png">
+<img height="3000px" src="public/screenshots/home.png">
 
 ### Product Detail
 <img height="450px" src="public/screenshots/product-details.jpg">
