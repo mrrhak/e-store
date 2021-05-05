@@ -66,7 +66,7 @@ require_once APPROOT . '/views/layouts/header.php';
           <hr>
           <div class="d-flex justify-content-between">
             <p style="text-align: left;">Total</p>
-            <p><?= $TotalPrice ?></p>
+            <p>$<?= number_format($TotalPrice, 2, '.', '') ?></p>
           </div>
           <div class="d-flex justify-content-between">
                 <p style="text-align: left;">Shipping Address</p>
