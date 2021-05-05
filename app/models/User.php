@@ -89,8 +89,7 @@ class User
     }
   }
 
-  public function findUserById($id)
-  {
+  public function findUserById($id) {
     //Prepared statement
     $this->db->query('SELECT * FROM users WHERE id = :id');
 
@@ -101,8 +100,7 @@ class User
     return $result;
   }
 
-  public function updateById($data, $id)
-  {
+  public function updateById($data, $id) {
     $this->db->query("UPDATE users SET username = :username, email = :email, role = :role, phone = :phone, address1 = :address1, address2 = :address2, password = :password WHERE id = :id");
     $this->db->bind(':username', $data['username']);
     $this->db->bind(':email', $data['email']);

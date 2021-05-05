@@ -19,7 +19,7 @@ require_once APPROOT . '/views/backend/layouts/header.php';
         <table class="table w-100" id="category-table">
           <thead class="w-100 bg-gray border-0">
             <tr>
-              <th scope="col">#No</th>
+              <th scope="col" style="width: 5px;">#No</th>
               <th scope="col">Name</th>
               <th scope="col">Created By</th>
               <th scope="col">Created At</th>

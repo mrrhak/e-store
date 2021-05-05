@@ -49,8 +49,7 @@
        
        
        //product page index
-       public  function index()
-       {
+       public  function index() {
            if($this->authUser != null){
                 if($this->authUser->role != 'admin'){
                     header('location: ' . URLROOT);

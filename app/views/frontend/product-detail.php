@@ -30,10 +30,12 @@
                   <i class = "fas fa-star-half-alt"></i><span style="color: red;">(4.5)</span>
               </div>   
           </div>
-          <form class="form">
-            <input type="text" placeholder="1" />
-            <a href="#" class = "buynow">Buy Now</a>
-            <a href="#" class="addCart">Add To Cart<i class = "fas fa-shopping-cart"></i></a>
+          <form class="form" name="productFormName" id="productFormId" method="POST">
+            <input type="number" name="qty" style="width: 100px;" placeholder="1" value="1" />
+            <input hidden type="number" name="userId" style="width: 100px;" placeholder="1" value="<?=$user->id?>" />
+            <input hidden type="number" name="productId" style="width: 100px;" placeholder="1" value="<?=$product->id?>" />          
+            <a href="#" onclick="buyNow()" class="buynow">Buy Now</a>
+            <a href="#" onclick="addToCart()" class="addCart">Add To Cart<i class="fas fa-shopping-cart"></i></a>
           </form>
           <h3>Product Description</h3>
           <p>
@@ -85,3 +87,47 @@
 <!-- Start Footer -->
 <?php require_once APPROOT.'/views/layouts/footer.php'; ?>
 <!-- End Footer -->
+<script>
+//toast message
+  let Toast = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: true,
+    timer: 8000
+  })
+  function addToCart(){
+    // alert('Hello');
+    $.ajax({
+      type: 'POST',
+      url: "<?= URLROOT ?>/carts/ajaxCreate",
+      data: new FormData(productFormName),
+      contentType: false,
+      processData: false,
+      success: (response) => {
+        console.log(response);
+        if(response.errors){
+          Toast.fire({
+            icon: 'error',
+            title: '&nbsp;&nbsp;'+response.errors.user
+          });
+        }else{
+          $('#cartBage').text(response.data.countCart)
+          Toast.fire({
+            icon: 'success',
+            title: '&nbsp;&nbsp;'+response.success
+          });
+        }
+        
+      },
+      error: function(response) {
+        console.log(response);       
+          //console.log(response)
+          // var errors = response.responseJSON.errors;
+          // $.each(errors, function(key, value) {
+          //     toastr.error(value);
+          // });
+      }
+
+    })
+  }
+</script>
