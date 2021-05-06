@@ -149,8 +149,6 @@ Email: customer@gmail.com
 ### Orders
 <img height="450px" src="public/screenshots/orders.jpg">
 
-### Users
-<img height="450px" src="public/screenshots/users.jpg">
 
 ## Contributor
 1. [Long Kimhak](http://www.mrrhak.com)
