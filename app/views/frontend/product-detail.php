@@ -34,7 +34,7 @@
             <input type="number" name="qty" style="width: 100px;" placeholder="1" value="1" />
             <input hidden type="number" name="userId" style="width: 100px;" placeholder="1" value="<?=$user->id?>" />
             <input hidden type="number" name="productId" style="width: 100px;" placeholder="1" value="<?=$product->id?>" />          
-            <a href="#" onclick="buyNow()" class="buynow">Buy Now</a>
+            <!-- <a href="#" onclick="buyNow()" class="buynow">Buy Now</a> -->
             <a href="#" onclick="addToCart()" class="addCart">Add To Cart<i class="fas fa-shopping-cart"></i></a>
           </form>
           <h3>Product Description</h3>
