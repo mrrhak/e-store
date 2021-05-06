@@ -106,7 +106,7 @@
         if(response.errors){
           Toast.fire({
             icon: 'error',
-            title: '&nbsp;&nbsp;'+(response.errors.user == undefined ? response.errors.qty : 'Something went wrong!')
+            title: '&nbsp;&nbsp;'+(response.errors.user == undefined ? (response.errors.carts == undefined ? 'Somthing went wrong' : response.errors.carts) : response.errors.user )
           });
         }else{
           $('#cartBage').text(response.data.countCart)
