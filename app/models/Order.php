@@ -6,7 +6,7 @@ class Order {
   }
   
   public function getInfos(){
-    $this->db->query('SELECT *,users.username,users.phone,orders.order_date as orderDate FROM orders join users on users.id = orders.user_id ORDER BY orders.order_date DESC');
+    $this->db->query('SELECT orders.order_id,orders.status,orders.total_amount,orders.order_date, users.username,users.phone,users.email FROM orders join users on users.id = orders.user_id ORDER BY orders.order_date DESC');
     return $this->db->resultSet();
   }
 
@@ -51,6 +51,24 @@ class Order {
     $this->db->query('SELECT * FROM orders');
     $this->db->execute();
     return $this->db->rowCount();
+  }
+
+  public function getOrderByUserId($id){
+    $this->db->query('SELECT orders.order_id,orders.status,orders.total_amount,orders.order_date, users.username,users.phone,users.email FROM orders join users on users.id = orders.user_id where users.id = :id');
+    $this->db->bind(':id', $id);
+    return $this->db->resultSet();
+  }
+
+  public function getLatestOrders($limit){
+    $this->db->query('SELECT orders.order_id,orders.status,orders.total_amount,orders.order_date, users.username,users.phone,users.email FROM orders join users on users.id = orders.user_id ORDER BY orders.order_date DESC LIMIT :limitNumber');
+    $this->db->bind(':limitNumber', $limit);
+    return $this->db->resultSet();
+  }
+
+  public function getProductBelongToOrderId($id){
+    $this->db->query('SELECT orders.order_id,orders.status,orders.total_amount,orders.order_date,products.name,products.id as product_id,products.image,products.description,order_details.product_qty,order_details.product_unit_price,order_details.amount FROM `orders` JOIN order_details on orders.order_id = order_details.order_id JOIN products on order_details.product_id = products.id WHERE orders.order_id = :id');
+    $this->db->bind(':id', $id);
+    return $this->db->resultSet();
   }
 
 

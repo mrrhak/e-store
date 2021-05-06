@@ -28,9 +28,9 @@ class Orders extends Controller {
     header('Content-type: application/json');
     if($_SERVER['REQUEST_METHOD'] == 'PUT'){
       if($this->orderModel->updateStatus($id,$status))
-        echo json_encode(['success' => 'Successfuly!']); 
+        echo json_encode(['success' => 'Update was successfuly']); 
       else 
-        echo json_encode(['errors' => 'Failed!']);
+        echo json_encode(['errors' => 'Something went wrong!']);
     }    
   }
 
@@ -51,7 +51,11 @@ class Orders extends Controller {
           'userId' => $this->session->get('user_id'),
           'carts' => empty($carts) ? '' : $carts, 
           'totalAmount' => isset($_POST['totalAmount']) ? $_POST['totalAmount'] : '', 
-        ];        
+        ];              
+        $errors = [];    
+        if($data['userId'] == '') $errors['user'] = 'Please login fisrt...!';
+        if($data['carts'] == '') $errors['carts'] = "Cart not found...!"; 
+        if(!empty($errors)) {echo json_encode(['errors'=>$errors]); return;};
         $result = $this->orderModel->store($data);
         if($result) foreach ($cartIds as $key => $id) $this->CartModel->updateStatusCart($id,1);
         echo json_encode(['success' => 'Place order successfuly!']);

@@ -506,13 +506,13 @@ class Users extends Controller{
       header('location: ' . URLROOT.'/users/login');
     }
 
-    $orderHistory = $this->authUser->id; //$this->order->;
+    $ordersHistory = $this->order->getOrderByUserId($this->authUser->id);
 
     $data = [
         'title' => 'Profile',
         'page' => 'profile',
         'user' => $this->authUser,
-        'orderHistory' => $orderHistory
+        'ordersHistory' => $ordersHistory
       ];
    $this->view('frontend/users/profile', $data);
   }

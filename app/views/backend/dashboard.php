@@ -79,7 +79,7 @@
         <div class="col-12 mt-4">
             <div class="card">
               <div class="card-header border-transparent">
-                <h3 class="card-title">Latest Orders</h3>
+                <h3 class="card-title">Latest 5 Orders</h3>
 
                 <!-- <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -96,50 +96,29 @@
                   <table class="table m-0">
                     <thead>
                     <tr>
-                      <th>Order ID</th>
+                      <th>ID</th>
+                      <th>Customer</th>
+                      <th>Phone</th>
                       <th>Amount</th>
-                      <th>Owner</th>
                       <th>Status</th>
                       <th>Created Date</th>
+                      <th>Actions</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                      <td class="text-primary">OR9842</td>
-                      <td>$100.00</td>
-                      <td>Mrr Hak</td>
-                      <td><span class="badge badge-success">Shipped</span></td>
-                      <td>May, 12 2021</td>
-                    </tr>
-                    <tr>
-                      <td class="text-primary">OR1848</a></td>
-                      <td>$52.55</td>
-                      <td>Mrr Hak</td>
-                      <td><span class="badge badge-warning">Pending</span></td>
-                      <td>May, 10 2021</td>
-                    </tr>
-                    <tr>
-                      <td class="text-primary">OR1848</a></td>
-                      <td>$52.55</td>
-                      <td>Mrr Hak</td>
-                      <td><span class="badge badge-danger">Delivered</span></td>
-                      <td>May, 10 2021</td>
-                    </tr>
-                    <tr>
-                      <td class="text-primary">OR1848</a></td>
-                      <td>$52.55</td>
-                      <td>Mrr Hak</td>
-                      <td><span class="badge badge-info">Processing</span></td>
-                      <td>May, 10 2021</td>
-                    </tr>
-                    <tr>
-                      <td class="text-primary">OR1848</a></td>
-                      <td>$52.55</td>
-                      <td>Mrr Hak</td>
-                      <td><span class="badge badge-warning">Pending</span></td>
-                      <td>May, 10 2021</td>
-                    </tr>
-                    
+                      <?php foreach($latestOrders as $key => $order) : ?>
+                        <tr>
+                          <td class="text-primary"><?= $order->order_id ?></td>
+                          <td><?= $order->username ?></td>
+                          <td><?= $order->phone ?></td>
+                          <td>$<?= $order->total_amount ?></td>
+                          <td><i class="badge <?= $order->status ? 'badge-success' : 'badge-warning' ?>"><?= $order->status ? 'Completed' : 'Panding' ?></i></td>
+                          <td><?= $order->order_date ?></td>
+                          <td>
+                            <button class="btn btn-primary btn-sm px-3 mr-2" data-id="<?= $order->id ?>" onclick="updateStatusOrder(<?= $order->order_id ?>,<?= !$order->status ?>)" <?= $order->status ? 'disabled' : ''?>>Make Complete</button>
+                          </td>
+                        </tr>
+                      <?php endforeach; ?>
                     </tbody>
                   </table>
                 </div>
@@ -157,3 +136,31 @@
 </div>
 
 <?php require_once 'layouts/footer.php' ?>
+
+
+<script>
+  let Toast = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: true,
+    timer: 8000
+  })
+
+  function updateStatusOrder(id,status){
+    //alert(status);
+    //alert("id : "+id+" value :"+value);
+    $.ajax({
+      type: 'PUT',
+      url: "<?= URLROOT ?>/orders/updateStatusOrder/"+id+"/"+status,
+      contentType: false,
+      data : {},
+      processData: false,
+      success: (response) => {
+        refresh(0);
+      },
+      error: function(response) {
+        console.log(response);
+      }
+    })
+  }
+</script>

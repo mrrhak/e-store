@@ -35,6 +35,7 @@ class Dashboard extends Controller
     $countProduct = $this->product->countProduct();
     $countCategory = $this->category->countCategory();
     $countOrder = $this->order->countOrder();
+    $latestOrders = $this->order->getLatestOrders(5);
 
     $data = [
       'title' => 'Admin Dashboard', // For make title
@@ -44,6 +45,7 @@ class Dashboard extends Controller
       'categoryCount' => $countCategory,
       'orderCount' => $countOrder,
       'userCount' => $countUser,
+      'latestOrders' => $latestOrders,
     ];
     $this->view('backend/dashboard', $data);
   }
