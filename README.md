@@ -101,10 +101,16 @@ Email: customer@gmail.com
 ### Frontend Feature
 - **[Home](#home)**
 - **[Product Detail](#product-detail)**
+- **[Cart](#cart)**
 - **[My Account](#my-account)**
 
 ### Backend Feature
 - **[Dashboard](#dashboard)**
+- **[Users](#users)**
+- **[Products](#products)**
+- **[Categories](#categories)**
+- **[Banners](#banners)**
+- **[Orders](#orders)**
 
 ## Frontend UI
 ### Home
@@ -112,6 +118,9 @@ Email: customer@gmail.com
 
 ### Product Detail
 <img height="450px" src="public/screenshots/product-details.jpg">
+
+### Cart
+<img height="450px" src="public/screenshots/carts.jpg">
 
 ### My Account
 <img height="450px" src="public/screenshots/my-account-page.jpg">
@@ -123,8 +132,25 @@ Email: customer@gmail.com
   ```
   https://github.com/ColorlibHQ/AdminLTE
   ```
- 
+ <img height="450px" src="public/screenshots/dashboard.jpg">
 
+### Users
+<img height="450px" src="public/screenshots/users.jpg">
+
+### Products
+<img height="450px" src="public/screenshots/products.jpg">
+
+### Categories
+<img height="450px" src="public/screenshots/categories.jpg">
+
+### Banners
+<img height="450px" src="public/screenshots/banners.jpg">
+
+### Orders
+<img height="450px" src="public/screenshots/orders.jpg">
+
+### Users
+<img height="450px" src="public/screenshots/users.jpg">
 
 ## Contributor
 1. [Long Kimhak](http://www.mrrhak.com)

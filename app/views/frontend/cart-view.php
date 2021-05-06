@@ -34,7 +34,6 @@ require_once APPROOT . '/views/layouts/header.php';
               </tr>
             </thead>
             <tbody>
-              <!-- <?= json_encode($carts) ?> -->
               <?php $TotalPrice = 0; ?>
               <form class="qty-form" name="checkoutForm">                
                 <?php foreach ($carts as $key => $cart) : ?>
