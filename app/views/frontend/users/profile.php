@@ -137,21 +137,41 @@
               <button type="button" class="btn btn-primary w-100" data-id="<?= $user->id ?>" data-bs-toggle="modal" data-bs-target="#modalEditUser">Update</button>
               <div class="row gutters-sm">
                 <div class="col-12">
-                <h3 class="text-center mt-4">Checkout History</h3>
-                  <div class="card mb-4">
-                    <div class="card-body">
-                      <h6 class="d-flex align-items-center mb-3">Date: 01/01/2021</h6>
-                      <small>Checkout 1</small>
+                  <div class="card my-4">
+                    <div class="card-header border-transparent">
+                      <h3 class="card-title text-center">Orders History</h3>
+                    </div>
+                    <div class="card-body p-0">
+                      <div class="table-responsive">
+                        <table class="table m-0">
+                          <thead>
+                          <tr>
+                            <th>ID</th>
+                            <th>Customer</th>
+                            <th>Phone</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                            <th>Created Date</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                            <?php foreach($ordersHistory as $key => $order) : ?>
+                              <tr>
+                                <td class="text-primary"><?= $order->order_id ?></td>
+                                <td><?= $order->username ?></td>
+                                <td><?= $order->phone ?></td>
+                                <td>$<?= $order->total_amount ?></td>
+                                <td><i class="badge <?= $order->status ? 'bg-success' : 'bg-warning' ?>"><?= $order->status ? 'Completed' : 'Panding' ?></i></td>
+                                <td><?= $order->order_date ?></td>
+                              </tr>
+                            <?php endforeach; ?>
+                          </tbody>
+                        </table>
+                      </div>
                     </div>
                   </div>
-                  <div class="card mb-4">
-                    <div class="card-body">
-                      <h6 class="d-flex align-items-center mb-3">Date: 01/01/2021</h6>
-                      <small>Checkout 2</small>
-                    </div>
-                  </div>
+
                 </div>
-                
               </div>
             </div>
           </div>

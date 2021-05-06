@@ -26,6 +26,7 @@ require_once APPROOT . '/views/backend/layouts/header.php';
               <table id="order-table" class="table table-bordered table-striped">
                 <thead>
                   <tr>
+                    <th>ID</th>
                     <th>Customer Name</th>
                     <th>Phone Number</th>
                     <th>Order Date</th>
@@ -34,16 +35,18 @@ require_once APPROOT . '/views/backend/layouts/header.php';
                     <th style="width: 160px;">Actions</th>
                   </tr>
                 </thead>
+                <?php //print_r($orders); ?>
                 <tbody>
                   <?php foreach ($orders as $key => $value) : ?>
                     <tr>
+                      <td><?= $value->order_id ?></td>
                       <td><?= $value->username ?></td>
                       <td><?= $value->phone ?></td>
                       <td><?= $value->order_date?></td>
                       <td>$ <?= number_format($value->total_amount,2,'.','') ?></td>
                       <td><i class="<?= $value->status ? 'badge badge-success' : 'badge badge-warning' ?>"><?= $value->status ? 'Completed' : 'Panding' ?></i></td>
                       <td>
-                        <button class="btn btn-primary btn-sm px-3 mr-2" data-id="<?= $value->id ?>" onclick="updateStatusOrder(<?= $value->order_id ?>,<?= !$value->status ?>)">Make Complete</button>
+                        <button class="btn btn-primary btn-sm px-3 mr-2" data-id="<?= $value->id ?>" onclick="updateStatusOrder(<?= $value->order_id ?>,<?= !$value->status ?>)" <?= $value->status ? 'disabled' : ''?>>Make Complete</button>
                       </td>
                     </tr>
                   <?php endforeach; ?>

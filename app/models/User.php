@@ -128,5 +128,10 @@ class User
     return $this->db->rowCount();// 1, 0
   }
 
-  
+  public function countUser(){
+    $this->db->query("SELECT * FROM users");
+    $this->db->execute();
+    return $this->db->rowCount();
+  }
+
 }

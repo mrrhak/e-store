@@ -47,15 +47,21 @@ class Order {
     }  
   }
 
+  public function countOrder(){
+    $this->db->query('SELECT * FROM orders');
+    $this->db->execute();
+    return $this->db->rowCount();
+  }
+
   public function getOrderByUserId($id){
     $this->db->query('SELECT orders.order_id,orders.status,orders.total_amount,orders.order_date, users.username,users.phone,users.email FROM orders join users on users.id = orders.user_id where users.id = :id');
     $this->db->bind(':id', $id);
-    return $this->db->single();
+    return $this->db->resultSet();
   }
 
   public function getLatestOrders($limit){
-    $this->db->query('SELECT orders.order_id,orders.status,orders.total_amount,orders.order_date, users.username,users.phone,users.email FROM orders join users on users.id = orders.user_id ORDER BY orders.order_date DESC DESC LIMIT :limit');
-    $this->db->bind(':limit', $limit);
+    $this->db->query('SELECT orders.order_id,orders.status,orders.total_amount,orders.order_date, users.username,users.phone,users.email FROM orders join users on users.id = orders.user_id ORDER BY orders.order_date DESC LIMIT :limitNumber');
+    $this->db->bind(':limitNumber', $limit);
     return $this->db->resultSet();
   }
 

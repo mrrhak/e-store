@@ -150,5 +150,12 @@
         }
 
     }
+
+    public function countProduct(){
+      $this->db->query("SELECT * FROM products");
+      $this->db->execute();
+      return $this->db->rowCount();
+    }
+
    }
 ?>
