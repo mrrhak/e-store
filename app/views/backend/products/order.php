@@ -23,7 +23,7 @@ require_once APPROOT . '/views/backend/layouts/header.php';
         <div class="col-12">
           <div class="card">
             <div class="card-body">
-              <table id="users-table" class="table table-bordered table-striped">
+              <table id="order-table" class="table table-bordered table-striped">
                 <thead>
                   <tr>
                     <th>Customer Name</th>
@@ -39,7 +39,7 @@ require_once APPROOT . '/views/backend/layouts/header.php';
                     <tr>
                       <td><?= $value->username ?></td>
                       <td><?= $value->phone ?></td>
-                      <td><?= $value->orderDate?></td>
+                      <td><?= $value->order_date?></td>
                       <td>$ <?= number_format($value->total_amount,2,'.','') ?></td>
                       <td><i class="<?= $value->status ? 'badge badge-success' : 'badge badge-warning' ?>"><?= $value->status ? 'Completed' : 'Panding' ?></i></td>
                       <td>
@@ -80,7 +80,14 @@ require_once APPROOT . '/views/backend/layouts/header.php';
     showConfirmButton: true,
     timer: 8000
   })
-
+  $('#order-table').DataTable({
+    "paging": true,
+    "lengthChange": true,
+    "searching": true,
+    "ordering": true,
+    "info": true,
+    "responsive": true,
+  });
   function updateStatusOrder(id,status){
     //alert(status);
     //alert("id : "+id+" value :"+value);

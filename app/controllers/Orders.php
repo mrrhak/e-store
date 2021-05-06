@@ -26,9 +26,9 @@ class Orders extends Controller {
     header('Content-type: application/json');
     if($_SERVER['REQUEST_METHOD'] == 'PUT'){
       if($this->orderModel->updateStatus($id,$status))
-        echo json_encode(['success' => 'Successfuly!']); 
+        echo json_encode(['success' => 'Update was successfuly']); 
       else 
-        echo json_encode(['errors' => 'Failed!']);
+        echo json_encode(['errors' => 'Something went wrong!']);
     }    
   }
 
