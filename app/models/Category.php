@@ -56,4 +56,10 @@ class Category
     $result = $this->db->single();
     return $result;
   }
+
+  public function countCategory(){
+    $this->db->query("SELECT * FROM categories");
+    $this->db->execute();
+    return $this->db->rowCount();
+  }
 }

@@ -47,5 +47,11 @@ class Order {
     }  
   }
 
+  public function countOrder(){
+    $this->db->query('SELECT * FROM orders');
+    $this->db->execute();
+    return $this->db->rowCount();
+  }
+
 
 }

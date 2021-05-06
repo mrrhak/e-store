@@ -15,6 +15,8 @@ class Orders extends Controller {
 	}
   public function index(){
     $data = [
+      'title' => 'Orders/Create',
+      'page' => "orders",
       'orders' => $this->orderModel->getInfos(),
       'user' => $this->authUser ?? null,
     ];

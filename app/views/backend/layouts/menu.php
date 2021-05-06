@@ -68,7 +68,7 @@
             <i class="nav-icon fas fa-shopping-cart"></i>
             <p>
               Orders
-              <span class="badge badge-danger right">10</span>
+              <!-- <span class="badge badge-danger right">10</span> -->
             </p>
           </a>
         </li>

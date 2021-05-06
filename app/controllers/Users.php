@@ -1,9 +1,11 @@
 <?php
 class Users extends Controller{
-  private $authUser;
+  private User $userModel;
+  private Order $order;
   public function __construct(){
     parent::__construct();
     $this->userModel = $this->model('User');
+    $this->order = $this->model('Order');
 
     if ($userId = $this->session->get('user_id')) {
         $this->authUser = $this->userModel->findUserById($userId);
@@ -504,10 +506,13 @@ class Users extends Controller{
       header('location: ' . URLROOT.'/users/login');
     }
 
+    $orderHistory = $this->authUser->id; //$this->order->;
+
     $data = [
         'title' => 'Profile',
         'page' => 'profile',
         'user' => $this->authUser,
+        'orderHistory' => $orderHistory
       ];
    $this->view('frontend/users/profile', $data);
   }

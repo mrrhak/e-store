@@ -34,6 +34,7 @@ require_once APPROOT . '/views/backend/layouts/header.php';
                     <th style="width: 160px;">Actions</th>
                   </tr>
                 </thead>
+                <?php //print_r($orders); ?>
                 <tbody>
                   <?php foreach ($orders as $key => $value) : ?>
                     <tr>

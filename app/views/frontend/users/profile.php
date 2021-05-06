@@ -137,7 +137,7 @@
               <button type="button" class="btn btn-primary w-100" data-id="<?= $user->id ?>" data-bs-toggle="modal" data-bs-target="#modalEditUser">Update</button>
               <div class="row gutters-sm">
                 <div class="col-12">
-                <h3 class="text-center mt-4">Checkout History</h3>
+                <h3 class="text-center mt-4">Checkout History <?= $orderHistory ?></h3>
                   <div class="card mb-4">
                     <div class="card-body">
                       <h6 class="d-flex align-items-center mb-3">Date: 01/01/2021</h6>
